@@ -24,7 +24,8 @@
 
 ```
 .
-├── index.html               # 单页站点
+├── mkc.html                 # 单页站点（主页面）
+├── index.html               # 根路径跳转到 mkc.html
 └── assets/
     ├── css/style.css        # 全部样式（深空主题、布局、动效）
     ├── audio/               # （可选）放入已授权的 bgm.mp3
