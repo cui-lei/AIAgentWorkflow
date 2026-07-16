@@ -240,7 +240,27 @@
     gate.id = 'bgmGate';
     gate.innerHTML =
       '<div class="bgm-gate__inner">' +
-      '<span class="bgm-gate__rocket" aria-hidden="true">🚀</span>' +
+      '<div class="bgm-gate__scene" aria-hidden="true">' +
+      '<span class="bgm-gate__glow"></span>' +
+      '<div class="rocket bgm-gate__rkt">' +
+      '<svg viewBox="0 0 120 220" width="132">' +
+      '<defs>' +
+      '<linearGradient id="gbody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe6ff"/></linearGradient>' +
+      '<linearGradient id="gfin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5da2"/><stop offset="1" stop-color="#a855f7"/></linearGradient>' +
+      '<radialGradient id="gwin" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#8ff3ff"/><stop offset="1" stop-color="#1f6feb"/></radialGradient>' +
+      '</defs>' +
+      '<path d="M60 6c22 20 30 46 30 78 0 22-6 40-14 54H44c-8-14-14-32-14-54 0-32 8-58 30-78z" fill="url(#gbody)"/>' +
+      '<path d="M30 96c-14 6-22 20-24 40 12-4 20-6 30-6z" fill="url(#gfin)"/>' +
+      '<path d="M90 96c14 6 22 20 24 40-12-4-20-6-30-6z" fill="url(#gfin)"/>' +
+      '<circle cx="60" cy="70" r="17" fill="url(#gwin)" stroke="#ff5da2" stroke-width="4"/>' +
+      '<circle cx="54" cy="64" r="5" fill="#ffffff" opacity="0.85"/>' +
+      '<path d="M44 138h32l-4 18H48z" fill="#ffd166"/>' +
+      '<rect x="44" y="112" width="32" height="8" rx="4" fill="#a855f7"/>' +
+      '</svg>' +
+      '<span class="rocket__flame"></span>' +
+      '</div>' +
+      '<span class="spark gs1">✦</span><span class="spark gs2">★</span><span class="spark gs3">✧</span>' +
+      '</div>' +
       '<h2>Miniversal Kids Cafe</h2>' +
       '<p>' + (zh ? '一间给爸妈的咖啡馆，一整个给孩子的宇宙' : 'A café for you, a universe for the kids') + '</p>' +
       '<button class="btn btn--primary btn--lg" id="bgmEnter"><span>' +
