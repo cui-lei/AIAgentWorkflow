@@ -233,7 +233,9 @@
   var pref = null;
   try { pref = localStorage.getItem('mv-bgm'); } catch (e) {}
 
-  if (pref !== 'off') {
+  /* The entry gate shows on EVERY visit — it's part of the brand
+     experience and its Enter click doubles as the autoplay gesture. */
+  {
     var zh = document.documentElement.lang === 'zh-CN';
     var gate = document.createElement('div');
     gate.className = 'bgm-gate';
@@ -283,25 +285,27 @@
       dismissGate();
     });
     gate.querySelector('#bgmMute').addEventListener('click', function () {
+      if (playing) stop();
       try { localStorage.setItem('mv-bgm', 'off'); } catch (e) {}
       dismissGate();
     });
 
-    // Attempt real autoplay — when the browser allows it, skip the gate.
-    var a = new Audio('assets/audio/bgm.mp3');
-    a.loop = true;
-    a.volume = 0.35;
-    a.addEventListener('error', function () {
-      audio = null; mode = 'synth';
-    });
-    a.play().then(function () {
-      audio = a; mode = 'file';
-      playing = true; setUI(true);
-      try { localStorage.setItem('mv-bgm', 'on'); } catch (e) {}
-      dismissGate();
-    }).catch(function () {
-      if (mode !== 'synth') { audio = a; mode = 'file'; }
-      // gate stays — the Enter click will start the music
-    });
+    // Try real autoplay in the background — when the browser allows it,
+    // music is already playing by the time the visitor clicks Enter.
+    if (pref !== 'off') {
+      var a = new Audio('assets/audio/bgm.mp3');
+      a.loop = true;
+      a.volume = 0.35;
+      a.addEventListener('error', function () {
+        audio = null; mode = 'synth';
+      });
+      a.play().then(function () {
+        audio = a; mode = 'file';
+        playing = true; setUI(true);
+        try { localStorage.setItem('mv-bgm', 'on'); } catch (e) {}
+      }).catch(function () {
+        if (mode !== 'synth') { audio = a; mode = 'file'; }
+      });
+    }
   }
 })();
