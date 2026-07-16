@@ -3,49 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>硅谷崔哥和他的朋友们 · AI Agent 工作流 | Silicon Valley AI Studio</title>
-  <meta name="description" content="硅谷崔哥和他的朋友们——一支扎根硅谷的 AI Agent 工作流团队，用多智能体协作把你的想法变成可运行的产品。科技与艺术并存，让 AI 真正为你工作。" />
-  <meta name="theme-color" content="#06060c" />
-  <meta property="og:title" content="硅谷崔哥和他的朋友们 · AI Agent 工作流" />
-  <meta property="og:description" content="扎根硅谷的多智能体工作流团队，把想法变成产品。" />
+  <title>Miniversal 迷你宇宙 · 悉尼太空主题儿童乐园咖啡馆 | 小小宇航员，出发！</title>
+  <meta name="description" content="Miniversal 迷你宇宙——悉尼 Marrickville 的太空主题室内儿童乐园与咖啡馆。火箭滑梯、星尘球池、乐高星球、软垫银河，0–10 岁小宇航员尽情探索，爸妈端一杯好咖啡安心陪伴。" />
+  <meta name="theme-color" content="#07061f" />
+  <meta property="og:title" content="Miniversal 迷你宇宙 · 悉尼太空主题儿童乐园" />
+  <meta property="og:description" content="小小宇航员，出发！火箭滑梯 · 星尘球池 · 乐高星球 · 咖啡馆。" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300e5ff'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%23090912'/%3E%3Cpath d='M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%23a855f7'/%3E%3Cstop offset='1' stop-color='%23ff5da2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%2307061f'/%3E%3Cpath d='M16 4c4 2.5 6 6.5 6 11 0 2.4-.9 4.6-2.2 6.3L16 25l-3.8-3.7A10.4 10.4 0 0 1 10 15c0-4.5 2-8.5 6-11z' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='13' r='2.3' fill='%2307061f'/%3E%3C/svg%3E" />
 </head>
 <body>
-  <div class="aurora" aria-hidden="true">
-    <span class="aurora__blob aurora__blob--1"></span>
-    <span class="aurora__blob aurora__blob--2"></span>
-    <span class="aurora__blob aurora__blob--3"></span>
+  <div class="cosmos" aria-hidden="true">
+    <canvas class="cosmos__stars" id="starfield"></canvas>
+    <span class="nebula nebula--1"></span>
+    <span class="nebula nebula--2"></span>
+    <span class="nebula nebula--3"></span>
+    <div class="orbs" id="orbs"></div>
   </div>
   <div class="grain" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
     <a class="nav__brand" href="#top" aria-label="返回顶部">
       <span class="nav__logo" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="30" height="30">
+        <svg viewBox="0 0 32 32" width="34" height="34">
           <defs>
             <linearGradient id="navg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00e5ff"/>
-              <stop offset="1" stop-color="#a855f7"/>
+              <stop offset="0" stop-color="#22d3ee"/>
+              <stop offset=".5" stop-color="#a855f7"/>
+              <stop offset="1" stop-color="#ff5da2"/>
             </linearGradient>
           </defs>
-          <path d="M16 4 L26 9.5 L26 22.5 L16 28 L6 22.5 L6 9.5 Z" fill="none" stroke="url(#navg)" stroke-width="1.6"/>
-          <circle cx="16" cy="16" r="2.6" fill="url(#navg)"/>
+          <path d="M16 4c4 2.5 6 6.5 6 11 0 2.4-.9 4.6-2.2 6.3L16 25l-3.8-3.7A10.4 10.4 0 0 1 10 15c0-4.5 2-8.5 6-11z" fill="url(#navg)"/>
+          <circle cx="16" cy="13" r="2.3" fill="#07061f"/>
         </svg>
       </span>
-      <span class="nav__name">硅谷崔哥<em>和他的朋友们</em></span>
+      <span class="nav__name">Miniversal<em>迷你宇宙</em></span>
     </a>
     <nav class="nav__links" aria-label="主导航">
-      <a href="#workflow">工作流</a>
-      <a href="#capabilities">能力</a>
-      <a href="#process">流程</a>
-      <a href="#friends">朋友们</a>
-      <a href="#contact" class="nav__cta">开始合作</a>
+      <a href="#attractions">乐园</a>
+      <a href="#cafe">咖啡馆</a>
+      <a href="#pricing">票价</a>
+      <a href="#party">生日派对</a>
+      <a href="#visit">到访</a>
+      <a href="#visit" class="nav__cta">预约游玩</a>
     </nav>
     <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -54,209 +57,273 @@
 
   <main id="top">
     <section class="hero" id="hero">
-      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
       <div class="hero__inner">
-        <div class="hero__badge reveal">
-          <span class="dot"></span> Based in Silicon Valley · 加州 · 旧金山湾区
+        <div class="hero__copy">
+          <div class="hero__badge reveal">
+            <span class="dot"></span> 悉尼 · Marrickville · 太空主题亲子乐园
+          </div>
+          <h1 class="hero__title">
+            <span class="reveal" style="--d:.05s">欢迎登陆</span>
+            <span class="reveal hero__brandline" style="--d:.12s"><span class="grad">Miniversal</span> 迷你宇宙</span>
+            <span class="reveal hero__tag" style="--d:.19s">小小宇航员，<span class="grad grad--2">出发！</span> 🚀</span>
+          </h1>
+          <p class="hero__sub reveal" style="--d:.27s">
+            火箭滑梯、星尘球池、乐高星球、软垫银河……<br />
+            一座为 <strong>0–10 岁</strong> 孩子打造的星际乐园。<br />
+            让小宇航员尽情探索，爸妈端一杯好咖啡，安心陪伴。
+          </p>
+          <div class="hero__actions reveal" style="--d:.35s">
+            <a href="#visit" class="btn btn--primary">
+              <span>预约游玩</span>
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#attractions" class="btn btn--ghost">看看有什么好玩的</a>
+          </div>
+          <dl class="hero__stats reveal" style="--d:.43s">
+            <div><dt data-count="10" data-prefix="0–">0</dt><dd>岁全龄段小宇航员</dd></div>
+            <div><dt data-count="8" data-suffix="+">0</dt><dd>主题星际游乐区</dd></div>
+            <div><dt data-count="50" data-prefix="Max ">0</dt><dd>人生日派对可容纳</dd></div>
+          </dl>
         </div>
-        <h1 class="hero__title">
-          <span class="reveal" style="--d:.05s">让 <span class="grad">AI Agent</span> 替你</span>
-          <span class="reveal" style="--d:.12s">把想法<span class="grad grad--2">跑成产品</span></span>
-        </h1>
-        <p class="hero__sub reveal" style="--d:.2s">
-          硅谷崔哥和他的朋友们 —— 一支扎根湾区的多智能体工作流团队。<br />
-          我们用编排好的 AI Agent，把零散的需求，变成会自己跑起来的系统。
-        </p>
-        <div class="hero__actions reveal" style="--d:.28s">
-          <a href="#contact" class="btn btn--primary">
-            <span>聊聊你的项目</span>
-            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#workflow" class="btn btn--ghost">看看工作流如何运转</a>
+        <div class="hero__stage reveal" style="--d:.2s" aria-hidden="true">
+          <div class="rocket-scene">
+            <span class="planet planet--ring"></span>
+            <span class="planet planet--small"></span>
+            <span class="moon"></span>
+            <div class="rocket">
+              <svg viewBox="0 0 120 220" width="150" class="rocket__svg">
+                <defs>
+                  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe6ff"/>
+                  </linearGradient>
+                  <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ff5da2"/><stop offset="1" stop-color="#a855f7"/>
+                  </linearGradient>
+                  <radialGradient id="win" cx="0.4" cy="0.35" r="0.8">
+                    <stop offset="0" stop-color="#8ff3ff"/><stop offset="1" stop-color="#1f6feb"/>
+                  </radialGradient>
+                </defs>
+                <path d="M60 6c22 20 30 46 30 78 0 22-6 40-14 54H44c-8-14-14-32-14-54 0-32 8-58 30-78z" fill="url(#body)"/>
+                <path d="M30 96c-14 6-22 20-24 40 12-4 20-6 30-6z" fill="url(#fin)"/>
+                <path d="M90 96c14 6 22 20 24 40-12-4-20-6-30-6z" fill="url(#fin)"/>
+                <circle cx="60" cy="70" r="17" fill="url(#win)" stroke="#ff5da2" stroke-width="4"/>
+                <circle cx="54" cy="64" r="5" fill="#ffffff" opacity="0.85"/>
+                <path d="M44 138h32l-4 18H48z" fill="#ffd166"/>
+                <rect x="44" y="112" width="32" height="8" rx="4" fill="#a855f7"/>
+              </svg>
+              <span class="rocket__flame"></span>
+            </div>
+            <span class="spark spark--1">✦</span>
+            <span class="spark spark--2">★</span>
+            <span class="spark spark--3">✦</span>
+            <span class="spark spark--4">✧</span>
+          </div>
         </div>
-        <dl class="hero__stats reveal" style="--d:.36s">
-          <div><dt data-count="48">0</dt><dd>已交付 Agent 项目</dd></div>
-          <div><dt data-count="12">0</dt><dd>硅谷工程师 &amp; 创作者</dd></div>
-          <div><dt data-count="96" data-suffix="%">0</dt><dd>客户复购与推荐率</dd></div>
-        </dl>
       </div>
-      <a href="#workflow" class="hero__scroll" aria-label="向下滚动">
+      <a href="#attractions" class="hero__scroll" aria-label="向下滚动">
         <span class="hero__mouse"></span>
-        <span class="hero__scroll-text">SCROLL</span>
+        <span class="hero__scroll-text">向下探索</span>
       </a>
     </section>
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>多智能体编排</span><i>✦</i><span>RAG 知识检索</span><i>✦</i><span>自动化工作流</span><i>✦</i>
-        <span>AI 产品原型</span><i>✦</i><span>Agent 评测与对齐</span><i>✦</i><span>私有化部署</span><i>✦</i>
-        <span>多智能体编排</span><i>✦</i><span>RAG 知识检索</span><i>✦</i><span>自动化工作流</span><i>✦</i>
-        <span>AI 产品原型</span><i>✦</i><span>Agent 评测与对齐</span><i>✦</i><span>私有化部署</span><i>✦</i>
+        <span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i>
+        <span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i>
+        <span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i>
+        <span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i>
       </div>
     </div>
 
-    <section class="section workflow" id="workflow">
+    <section class="section attractions" id="attractions">
       <div class="section__head reveal">
-        <span class="eyebrow">THE AI AGENT WORKFLOW</span>
-        <h2>不是一个聊天框，<br />而是一条<span class="grad">会自己运转</span>的流水线</h2>
-        <p>每一个 Agent 各司其职，像硅谷的工程团队一样协作。点亮下面的节点，看一条需求如何在五个智能体之间流动、闭环。</p>
-      </div>
-      <div class="flow reveal">
-        <ol class="flow__steps">
-          <li class="flow__step is-active" data-step="0">
-            <span class="flow__index">01</span>
-            <span class="flow__icon">👁️</span>
-            <div><h3>感知 · Perceive</h3><p>接入你的数据、文档与接口，理解真实的业务语境。</p></div>
-          </li>
-          <li class="flow__step" data-step="1">
-            <span class="flow__index">02</span>
-            <span class="flow__icon">🧭</span>
-            <div><h3>规划 · Plan</h3><p>主控 Agent 拆解目标，编排子任务，定义成功标准。</p></div>
-          </li>
-          <li class="flow__step" data-step="2">
-            <span class="flow__index">03</span>
-            <span class="flow__icon">⚙️</span>
-            <div><h3>执行 · Act</h3><p>工具型 Agent 调用 API、写代码、操作系统，把计划落地。</p></div>
-          </li>
-          <li class="flow__step" data-step="3">
-            <span class="flow__index">04</span>
-            <span class="flow__icon">🤝</span>
-            <div><h3>协作 · Collaborate</h3><p>多个 Agent 互相校验、并行分工，像团队一样查漏补缺。</p></div>
-          </li>
-          <li class="flow__step" data-step="4">
-            <span class="flow__index">05</span>
-            <span class="flow__icon">🔁</span>
-            <div><h3>反馈 · Reflect</h3><p>评估结果、自我修正，持续学习并把经验沉淀回流程。</p></div>
-          </li>
-        </ol>
-        <div class="flow__stage" aria-hidden="true">
-          <svg class="flow__diagram" viewBox="0 0 400 400" id="flowDiagram">
-            <defs>
-              <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#00e5ff"/>
-                <stop offset="1" stop-color="#a855f7"/>
-              </linearGradient>
-              <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <g class="flow__edges" id="flowEdges"></g>
-            <circle class="flow__core" cx="200" cy="200" r="34" />
-            <text class="flow__core-label" x="200" y="200" text-anchor="middle" dominant-baseline="central">Orchestrator</text>
-            <g id="flowNodes"></g>
-          </svg>
-          <p class="flow__hint">主控编排 · 5 个智能体围绕同一个目标闭环协作</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section capabilities" id="capabilities">
-      <div class="section__head reveal">
-        <span class="eyebrow">WHAT WE BUILD</span>
-        <h2>我们替你<span class="grad">造</span>什么</h2>
-        <p>从一个想法到上线运行，每一层都有对应的 Agent 能力托底。</p>
+        <span class="eyebrow">✦ THE PLAYGROUND · 星际游乐场</span>
+        <h2>八大主题游乐区，<br />一整座<span class="grad">属于孩子的宇宙</span></h2>
+        <p>从火箭发射台到星尘球海，每一处都为好奇心而设计。安全、干净、每天多次消毒，让孩子放肆玩、爸妈放心陪。</p>
       </div>
       <div class="cards">
-        <article class="card reveal" style="--d:.04s">
-          <span class="card__num">01</span><h3>多智能体编排</h3>
-          <p>把复杂任务拆给一组各有专长的 Agent，主控调度、并行协作、互相校验，稳定交付。</p>
-          <ul><li>任务分解</li><li>角色分工</li><li>结果共识</li></ul>
+        <article class="card reveal" style="--d:.04s;--g1:#ff5da2;--g2:#a855f7">
+          <span class="card__emoji">🚀</span>
+          <span class="card__num">01</span>
+          <h3>火箭滑梯</h3><span class="card__en">Rocket Slides</span>
+          <p>登上巨型火箭，从星球之巅一路俯冲而下，尖叫与欢笑同时发射升空。</p>
         </article>
-        <article class="card reveal" style="--d:.1s">
-          <span class="card__num">02</span><h3>知识增强 RAG</h3>
-          <p>接入你的私有文档与数据，让 Agent 基于真实知识回答与决策，而不是凭空想象。</p>
-          <ul><li>向量检索</li><li>引用溯源</li><li>持续更新</li></ul>
+        <article class="card reveal" style="--d:.09s;--g1:#22d3ee;--g2:#6366f1">
+          <span class="card__emoji">🌟</span>
+          <span class="card__num">02</span>
+          <h3>星尘球池</h3><span class="card__en">Stardust Ball Pit</span>
+          <p>跳进闪闪发光的巨型球海，成千上万颗「星尘」，像遨游在无垠星辰之间。</p>
         </article>
-        <article class="card reveal" style="--d:.16s">
-          <span class="card__num">03</span><h3>自动化工作流</h3>
-          <p>把重复的人力流程交给 Agent，7×24 自动运转，从触发到交付全链路打通。</p>
-          <ul><li>事件触发</li><li>工具调用</li><li>异常自愈</li></ul>
+        <article class="card reveal" style="--d:.14s;--g1:#a3e635;--g2:#22d3ee">
+          <span class="card__emoji">🛸</span>
+          <span class="card__num">03</span>
+          <h3>软垫银河</h3><span class="card__en">Soft-Play Galaxy</span>
+          <p>柔软安全的软垫王国，尽情攀爬、翻滚、穿梭，把整片银河当作游乐场。</p>
         </article>
-        <article class="card reveal" style="--d:.22s">
-          <span class="card__num">04</span><h3>AI 产品原型</h3>
-          <p>几天内做出可点可用的 AI Demo，快速验证想法，再迭代成真正的产品。</p>
-          <ul><li>快速验证</li><li>体验设计</li><li>可演示</li></ul>
+        <article class="card reveal" style="--d:.19s;--g1:#fb923c;--g2:#ff5da2">
+          <span class="card__emoji">🧱</span>
+          <span class="card__num">04</span>
+          <h3>乐高星球</h3><span class="card__en">LEGO Planet</span>
+          <p>小小建筑师的创意基地，用一块块积木搭出属于自己的星球与飞船。</p>
         </article>
-        <article class="card reveal" style="--d:.28s">
-          <span class="card__num">05</span><h3>评测与对齐</h3>
-          <p>为 Agent 建立评测集与护栏，让它在上线后依然可靠、可控、可信。</p>
-          <ul><li>评测基准</li><li>安全护栏</li><li>持续监控</li></ul>
+        <article class="card reveal" style="--d:.24s;--g1:#fde047;--g2:#fb923c">
+          <span class="card__emoji">🪐</span>
+          <span class="card__num">05</span>
+          <h3>障碍闯关</h3><span class="card__en">Obstacle Course</span>
+          <p>穿越「陨石带」的勇气挑战，锻炼平衡、协调与胆量，一关接一关。</p>
         </article>
-        <article class="card reveal" style="--d:.34s">
-          <span class="card__num">06</span><h3>私有化部署</h3>
-          <p>数据不出门，按你的合规要求把整套 Agent 工作流部署在你自己的环境里。</p>
-          <ul><li>本地部署</li><li>数据自控</li><li>合规可审</li></ul>
+        <article class="card reveal" style="--d:.29s;--g1:#818cf8;--g2:#22d3ee">
+          <span class="card__emoji">🕹️</span>
+          <span class="card__num">06</span>
+          <h3>街机 & 互动游戏</h3><span class="card__en">Arcade & Games</span>
+          <p>点亮一块块屏幕，一场接一场的互动冒险，等着小宇航员来挑战高分。</p>
+        </article>
+        <article class="card reveal" style="--d:.34s;--g1:#ec4899;--g2:#f59e0b">
+          <span class="card__emoji">👩‍🚀</span>
+          <span class="card__num">07</span>
+          <h3>角色扮演</h3><span class="card__en">Dress-Up Zone</span>
+          <p>换上宇航服、戴上头盔，展开一段只属于自己的想象力太空剧。</p>
+        </article>
+        <article class="card reveal" style="--d:.39s;--g1:#34d399;--g2:#22d3ee">
+          <span class="card__emoji">🍼</span>
+          <span class="card__num">08</span>
+          <h3>幼儿专区</h3><span class="card__en">Toddler Bay</span>
+          <p>为 0–3 岁宝宝准备的温柔小星域，独立、安全、无忧，第一次冒险从这里开始。</p>
         </article>
       </div>
     </section>
 
-    <section class="section process" id="process">
+    <section class="section cafe" id="cafe">
+      <div class="cafe__grid">
+        <div class="cafe__copy reveal">
+          <span class="eyebrow">☕ THE CAFÉ · 补给舱</span>
+          <h2>爸妈的加油站，<br />小宇航员的<span class="grad grad--2">补给舱</span></h2>
+          <p>玩累了就来补充能量。驻店厨师现做的手工披萨、香甜蛋糕与健康儿童餐，还有一杯认真对待的现磨咖啡——大人小孩，一起能量满格。</p>
+          <ul class="cafe__list">
+            <li><span>☕</span> 现磨咖啡 · 认真对待的每一杯</li>
+            <li><span>🍕</span> 手工披萨 · 驻店厨师现烤</li>
+            <li><span>🍰</span> 甜点蛋糕 · 香甜不腻的小奖励</li>
+            <li><span>🧒</span> 健康儿童餐 · 挑嘴宝宝也爱吃</li>
+            <li><span>🧃</span> 鲜榨果汁 · 冒险补给的能量源</li>
+          </ul>
+        </div>
+        <div class="cafe__cards reveal" style="--d:.12s" aria-hidden="true">
+          <div class="treat treat--a"><span>☕</span><b>Coffee</b></div>
+          <div class="treat treat--b"><span>🍕</span><b>Pizza</b></div>
+          <div class="treat treat--c"><span>🍰</span><b>Cake</b></div>
+          <div class="treat treat--d"><span>🧃</span><b>Juice</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
       <div class="section__head reveal">
-        <span class="eyebrow">HOW WE WORK</span>
-        <h2>四步，把你的想法<span class="grad grad--2">送上线</span></h2>
+        <span class="eyebrow">🎟️ ENTRY · 入场票价</span>
+        <h2>票价<span class="grad">一目了然</span></h2>
+        <p>6 个月以下宝宝免费入场。为了安全与卫生，小朋友需穿防滑袜，家长入场也请穿袜子（现场均可购买）。</p>
       </div>
-      <div class="timeline">
-        <div class="timeline__item reveal">
-          <span class="timeline__dot"></span><span class="timeline__week">第 1 周</span>
-          <h3>共识</h3><p>一起把模糊的想法聊清楚，定义要解决的真问题和成功的样子。</p>
+      <div class="price-toggle reveal">
+        <button class="price-toggle__btn is-active" data-day="week">工作日 Weekday</button>
+        <button class="price-toggle__btn" data-day="weekend">周末 Weekend</button>
+      </div>
+      <div class="price-panels reveal" style="--d:.08s">
+        <div class="price-panel is-active" data-panel="week">
+          <table class="price-table">
+            <thead>
+              <tr><th>年龄</th><th>按小时 Hourly</th><th>全天通票 Day Pass</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>6–12 个月</td><td>$10</td><td>$10</td></tr>
+              <tr><td>1–3 岁</td><td>$12</td><td>$36</td></tr>
+              <tr class="is-hero"><td>4–12 岁</td><td>$14</td><td>$42</td></tr>
+              <tr><td>成人</td><td>$5</td><td>$5</td></tr>
+              <tr><td>6 个月以下</td><td colspan="2" class="price-free">免费 Free</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="timeline__item reveal" style="--d:.1s">
-          <span class="timeline__dot"></span><span class="timeline__week">第 1–2 周</span>
-          <h3>原型</h3><p>快速搭出可运行的 Agent 工作流原型，让你尽早摸到真实效果。</p>
-        </div>
-        <div class="timeline__item reveal" style="--d:.2s">
-          <span class="timeline__dot"></span><span class="timeline__week">第 2–4 周</span>
-          <h3>打磨</h3><p>接真实数据、调编排、做评测，把原型变成稳定可靠的系统。</p>
-        </div>
-        <div class="timeline__item reveal" style="--d:.3s">
-          <span class="timeline__dot"></span><span class="timeline__week">持续</span>
-          <h3>护航</h3><p>上线后继续监控、迭代与优化，让你的 Agent 越用越聪明。</p>
+        <div class="price-panel" data-panel="weekend">
+          <table class="price-table">
+            <thead>
+              <tr><th>年龄</th><th>按小时 Hourly</th><th>全天通票 Day Pass</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>6–12 个月</td><td>$12</td><td>$12</td></tr>
+              <tr><td>1–3 岁</td><td>$14</td><td>$42</td></tr>
+              <tr class="is-hero"><td>4–12 岁</td><td>$16</td><td>$48</td></tr>
+              <tr><td>成人</td><td>$5</td><td>$5</td></tr>
+              <tr><td>6 个月以下</td><td colspan="2" class="price-free">免费 Free</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
+      <p class="price-note reveal">* 价格以门店现场公示为准。防滑袜可现场购买。</p>
     </section>
 
-    <section class="section friends" id="friends">
-      <div class="section__head reveal">
-        <span class="eyebrow">CUI &amp; FRIENDS</span>
-        <h2>崔哥和<span class="grad">一群硅谷的朋友</span></h2>
-        <p>我们不是一家冷冰冰的公司，而是一群在硅谷一线写代码、做产品、玩 AI 的朋友。</p>
-      </div>
-      <div class="friends__grid">
-        <article class="friend reveal">
-          <div class="friend__avatar" style="--c1:#00e5ff;--c2:#a855f7">崔</div>
-          <h3>崔哥</h3><span class="friend__role">主理人 · 连接者</span>
-          <p>在硅谷待了十几年，把工程师、创作者和好想法连在一起的那个人。</p>
-        </article>
-        <article class="friend reveal" style="--d:.08s">
-          <div class="friend__avatar" style="--c1:#38bdf8;--c2:#22d3ee">A</div>
-          <h3>Agent 工程师们</h3><span class="friend__role">把 AI 跑通的人</span>
-          <p>来自一线大厂与创业公司的工程师，专攻多智能体系统与基础设施。</p>
-        </article>
-        <article class="friend reveal" style="--d:.16s">
-          <div class="friend__avatar" style="--c1:#a855f7;--c2:#ec4899">D</div>
-          <h3>设计与体验</h3><span class="friend__role">让技术有温度</span>
-          <p>把复杂的 AI 包装成好看、好用、让人记得住的产品体验。</p>
-        </article>
-        <article class="friend reveal" style="--d:.24s">
-          <div class="friend__avatar" style="--c1:#f59e0b;--c2:#ef4444">C</div>
-          <h3>创作者社区</h3><span class="friend__role">把声音传出去</span>
-          <p>一群懂内容、懂传播的朋友，帮好产品被更多人看见。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="contact__card reveal">
-        <div class="contact__glow" aria-hidden="true"></div>
-        <span class="eyebrow">LET'S BUILD</span>
-        <h2>有个想法？<br />让我们用 <span class="grad">AI Agent</span> 帮你跑起来。</h2>
-        <p>不管你是想做一个 AI 产品、自动化一段流程，还是只是想聊聊 AI 能为你做什么——硅谷崔哥和他的朋友们随时在。</p>
-        <div class="contact__actions">
-          <a href="mailto:lei@piastech.com?subject=想聊聊一个%20AI%20Agent%20项目" class="btn btn--primary">
-            <span>发邮件给我们</span>
+    <section class="section party" id="party">
+      <div class="party__card reveal">
+        <div class="party__glow" aria-hidden="true"></div>
+        <div class="party__head">
+          <span class="eyebrow">🎂 BIRTHDAY · 星际庆典</span>
+          <h2>一场专属孩子的<br /><span class="grad grad--2">星际生日派对</span></h2>
+          <p>把最难忘的一天交给我们。专属派对管家全程协助，你只管和孩子一起享受这场太空庆典。</p>
+        </div>
+        <ul class="party__list">
+          <li><span class="party__ic">🍽️</span><div><b>厨师现做儿童餐</b>每位小朋友一份，驻店厨师亲手烹制</div></li>
+          <li><span class="party__ic">🧃</span><div><b>鲜榨果汁</b>每位小朋友一杯，冒险补给不间断</div></li>
+          <li><span class="party__ic">🧦</span><div><b>防滑袜</b>每位小朋友一双，安心尽情玩</div></li>
+          <li><span class="party__ic">🎈</span><div><b>独享主题派对房</b>Miniversal 主题餐具与桌面布置</div></li>
+          <li><span class="party__ic">💌</span><div><b>定制主题邀请函</b>一份独一无二的太空邀约</div></li>
+          <li><span class="party__ic">🧑‍🚀</span><div><b>专属派对管家</b>全程协助，帮你安排好每个细节</div></li>
+        </ul>
+        <div class="party__meta">
+          <span>👶 最多可容纳 <strong>50</strong> 位小朋友</span>
+          <span>📅 工作日最低 <strong>15</strong> 人 · 周末最低 <strong>23</strong> 人起订</span>
+        </div>
+        <div class="party__cta">
+          <a href="tel:+61293903017" class="btn btn--primary"><span>预订派对</span>
             <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#top" class="btn btn--ghost">回到顶部</a>
         </div>
-        <p class="contact__meta">📍 Silicon Valley, California · 全球远程协作</p>
+      </div>
+    </section>
+
+    <section class="section visit" id="visit">
+      <div class="section__head reveal">
+        <span class="eyebrow">📍 VISIT US · 到访我们</span>
+        <h2>来 Miniversal，<span class="grad">发射一场冒险</span></h2>
+      </div>
+      <div class="visit__grid">
+        <a class="visit__item reveal" href="https://maps.google.com/?q=24-28+Murray+St+Marrickville+NSW+2204" target="_blank" rel="noopener">
+          <span class="visit__ic">📍</span>
+          <h3>地址</h3>
+          <p>24–28 Murray St<br />Marrickville NSW 2204</p>
+          <span class="visit__link">在地图中打开 →</span>
+        </a>
+        <a class="visit__item reveal" style="--d:.08s" href="tel:+61293903017">
+          <span class="visit__ic">📞</span>
+          <h3>电话预约</h3>
+          <p>02 9390 3017</p>
+          <span class="visit__link">拨打电话 →</span>
+        </a>
+        <div class="visit__item reveal" style="--d:.16s">
+          <span class="visit__ic">👶</span>
+          <h3>适龄</h3>
+          <p>0–10 岁小宇航员<br />各年龄段都有专属区域</p>
+        </div>
+        <div class="visit__item reveal" style="--d:.24s">
+          <span class="visit__ic">🕒</span>
+          <h3>营业时间</h3>
+          <p>营业时间可能因私人包场调整，<br />出行前请查看 Google 最新信息</p>
+        </div>
+      </div>
+      <div class="visit__banner reveal">
+        <div>
+          <h3>准备好出发了吗？</h3>
+          <p>预约游玩、包场派对，或只是来喝杯咖啡看孩子撒欢——随时欢迎登陆迷你宇宙。</p>
+        </div>
+        <a href="tel:+61293903017" class="btn btn--primary btn--lg"><span>立即预约</span>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </section>
   </main>
@@ -264,24 +331,24 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <span class="nav__name">硅谷崔哥<em>和他的朋友们</em></span>
-        <p>扎根硅谷的 AI Agent 工作流团队。<br />把想法，跑成产品。</p>
+        <span class="nav__name">Miniversal<em>迷你宇宙</em></span>
+        <p>悉尼 Marrickville 的太空主题儿童乐园与咖啡馆。<br />小小宇航员，出发！🚀</p>
       </div>
       <nav class="footer__nav" aria-label="页脚导航">
-        <a href="#workflow">工作流</a>
-        <a href="#capabilities">能力</a>
-        <a href="#process">流程</a>
-        <a href="#friends">朋友们</a>
-        <a href="#contact">合作</a>
+        <a href="#attractions">乐园</a>
+        <a href="#cafe">咖啡馆</a>
+        <a href="#pricing">票价</a>
+        <a href="#party">生日派对</a>
+        <a href="#visit">到访</a>
       </nav>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="year">2026</span> 硅谷崔哥和他的朋友们 · Silicon Valley AI Studio</span>
-      <span class="footer__made">Made with AI Agents in Silicon Valley</span>
+      <span>© <span id="year">2026</span> Miniversal Kids Cafe · 24–28 Murray St, Marrickville NSW</span>
+      <span class="footer__made">Made with ✦ for little astronauts</span>
     </div>
   </footer>
 
-  <script src="assets/js/hero.js" defer></script>
+  <script src="assets/js/starfield.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

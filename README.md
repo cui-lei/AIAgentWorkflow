@@ -1,57 +1,56 @@
-# 硅谷崔哥和他的朋友们 · Silicon Valley AI Studio
+# Miniversal 迷你宇宙 · 太空主题儿童乐园咖啡馆
 
-> 扎根硅谷的 AI Agent 工作流团队。把想法，跑成产品。
+> 小小宇航员，出发！🚀 悉尼 Marrickville 的太空主题室内儿童乐园与咖啡馆。
 
-一个为「硅谷崔哥和他的朋友们」打造的品牌官网——突出 **AI Agent 工作流**，
-科技感与艺术感并存，让客户记得住、有好感。
+一个为 **Miniversal Kids Cafe** 打造的斩杀级、强视觉冲击力的品牌官网——
+深空主题、极致沉浸，让家长和孩子第一眼就记住这座「迷你宇宙」。
+主题与内容参照原网站 [miniversal.com.au](https://www.miniversal.com.au/)。
 
-## ✨ 亮点
+## ✨ 视觉亮点
 
-- **沉浸式 Hero** — Canvas 实现的神经网络粒子场，随光标流动连线。
-- **AI Agent 工作流可视化** — 交互式多智能体编排图（感知 → 规划 → 执行 → 协作 → 反馈），
-  自动轮播、可点亮、悬停联动。
-- **科技 + 艺术视觉** — 极光流动背景、玻璃拟态、网格、胶片颗粒、双向渐变。
-- **完整内容板块** — 能力矩阵、合作流程时间线、「崔哥和他的朋友们」团队介绍、合作 CTA。
-- **响应式 & 无障碍** — 移动端菜单、滚动揭示动画、`prefers-reduced-motion` 支持。
+- **动态星空 Hero** — Canvas 实现的多层视差星场，随光标流动，定时划过流星。
+- **火箭发射场景** — SVG 火箭 + 喷焰、环带行星、卫星与闪烁星光，全程漂浮动效。
+- **星尘球池氛围** — 漂浮的「球池」彩色光球、极光星云辉光、胶片颗粒质感。
+- **完整内容板块** — 八大主题游乐区、咖啡馆补给舱、工作日/周末票价切换表、
+  生日派对套餐、到访信息（地址 / 电话 / 适龄 / 营业时间）。
+- **响应式 & 无障碍** — 移动端抽屉菜单、滚动揭示、数字滚动计数、`prefers-reduced-motion` 支持。
 - **零构建** — 纯 HTML / CSS / 原生 JS，打开即用，部署即上线。
 
 ## 🗂 结构
 
 ```
 .
-├── index.html            # 单页站点
+├── index.html               # 单页站点
 └── assets/
-    ├── css/style.css     # 全部样式（主题、布局、动效）
+    ├── css/style.css        # 全部样式（深空主题、布局、动效）
     └── js/
-        ├── hero.js       # Hero 神经网络粒子动画
-        └── main.js       # 导航、滚动揭示、计数器、工作流交互图
+        ├── starfield.js     # Canvas 星空 + 流星 + 视差
+        └── main.js          # 导航、滚动揭示、计数器、票价切换、光球
 ```
 
 ## 🚀 本地预览
 
-无需依赖，直接用任意静态服务器打开即可：
+无需依赖，任意静态服务器即可：
 
 ```bash
-# 方式一：Python
-python3 -m http.server 8080
-
-# 方式二：Node
-npx serve .
+python3 -m http.server 8080   # 或： npx serve .
 ```
 
 然后访问 http://localhost:8080 。
 
-## 🌐 部署
+## 📍 门店信息
 
-任意静态托管均可一键上线：GitHub Pages、Vercel、Netlify、Cloudflare Pages 等。
-将仓库根目录作为站点根目录发布即可。
+- 地址：24–28 Murray St, Marrickville NSW 2204
+- 电话：02 9390 3017
+- 适龄：0–10 岁
+- 6 个月以下宝宝免费；小朋友需穿防滑袜，家长入场需穿袜子（现场可购买）。
 
 ## 🎨 设计语言
 
-- 主色：电光青 `#00e5ff` → 紫罗兰 `#a855f7` → 品红 `#ec4899`
-- 字体：Space Grotesk（展示）/ Noto Sans SC（正文）/ JetBrains Mono（点缀）
-- 基调：深空黑底 + 极光辉光 + 玻璃质感
+- 主色：电光青 `#22d3ee` → 紫罗兰 `#a855f7` → 星尘粉 `#ff5da2`，点缀星光黄 `#ffd166`、橙 `#fb923c`、青柠 `#a3e635`
+- 字体：Fredoka（圆润展示）/ Noto Sans SC（正文）/ Space Grotesk（英文点缀）
+- 基调：深空黑底 + 星云辉光 + 玻璃质感 + 球池彩光
 
 ---
 
-Made with AI Agents in Silicon Valley · © 硅谷崔哥和他的朋友们
+Made with ✦ for little astronauts · Miniversal Kids Cafe

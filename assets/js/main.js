@@ -1,169 +1,113 @@
-/* Site interactions: nav, reveals, counters, mobile menu, and the
-   interactive multi-agent workflow diagram. */
+/* Miniversal · nav, reveal, counters, pricing toggle, ball-pit orbs */
 (function () {
-  "use strict";
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- year ---- */
-  var yr = document.getElementById("year");
-  if (yr) yr.textContent = String(new Date().getFullYear());
+  /* ---------- Year ---------- */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
 
-  /* ---- sticky nav ---- */
-  var nav = document.getElementById("nav");
+  /* ---------- Nav: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  var links = document.querySelector('.nav__links');
+
   function onScroll() {
-    if (window.scrollY > 24) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---- mobile menu ---- */
-  var toggle = document.getElementById("navToggle");
-  var links = document.querySelector(".nav__links");
-  if (toggle && links) {
-    toggle.addEventListener("click", function () {
-      var open = links.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "关闭菜单" : "打开菜单");
+  function closeMenu() {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    links.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        links.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
     });
   }
 
-  /* ---- reveal on scroll ---- */
-  var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    reveals.forEach(function (el) { el.classList.add("in"); });
+    revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---- animated counters ---- */
-  var counters = document.querySelectorAll("[data-count]");
-  function runCounter(el) {
-    var target = parseFloat(el.getAttribute("data-count"));
-    var suffix = el.getAttribute("data-suffix") || "";
-    var dur = 1600, t0 = null;
-    function tick(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
+  /* ---------- Count-up stats ---------- */
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var prefix = el.getAttribute('data-prefix') || '';
+    if (reduce) { el.textContent = prefix + target + suffix; return; }
+    var dur = 1400, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
     }
-    requestAnimationFrame(tick);
+    requestAnimationFrame(step);
   }
-  if ("IntersectionObserver" in window) {
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window) {
     var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animateCount(en.target); cio.unobserve(en.target); }
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { cio.observe(el); });
   } else {
-    counters.forEach(runCounter);
+    counters.forEach(animateCount);
   }
 
-  /* ---- interactive workflow diagram ---- */
-  var edgesG = document.getElementById("flowEdges");
-  var nodesG = document.getElementById("flowNodes");
-  var steps = document.querySelectorAll(".flow__step");
-  if (edgesG && nodesG && steps.length) {
-    var NS = "http://www.w3.org/2000/svg";
-    var cx = 200, cy = 200, R = 130;
-    var icons = ["👁️", "🧭", "⚙️", "🤝", "🔁"];
-    var count = icons.length;
-    var pts = [];
-
-    for (var i = 0; i < count; i++) {
-      var ang = (-Math.PI / 2) + (i * 2 * Math.PI / count);
-      pts.push({ x: cx + R * Math.cos(ang), y: cy + R * Math.sin(ang) });
-    }
-
-    // edges: spokes to core + ring between consecutive nodes
-    var edgeEls = [];
-    function line(x1, y1, x2, y2) {
-      var p = document.createElementNS(NS, "path");
-      p.setAttribute("d", "M" + x1 + " " + y1 + " L" + x2 + " " + y2);
-      edgesG.appendChild(p);
-      return p;
-    }
-    var spokes = [];
-    for (var s = 0; s < count; s++) {
-      spokes.push(line(cx, cy, pts[s].x, pts[s].y));
-    }
-    var ring = [];
-    for (var r = 0; r < count; r++) {
-      var nx = pts[(r + 1) % count];
-      ring.push(line(pts[r].x, pts[r].y, nx.x, nx.y));
-    }
-
-    // nodes
-    var nodeEls = [];
-    for (var n = 0; n < count; n++) {
-      var g = document.createElementNS(NS, "g");
-      g.setAttribute("class", "flow__node");
-      var circle = document.createElementNS(NS, "circle");
-      circle.setAttribute("cx", pts[n].x);
-      circle.setAttribute("cy", pts[n].y);
-      circle.setAttribute("r", "26");
-      var txt = document.createElementNS(NS, "text");
-      txt.setAttribute("x", pts[n].x);
-      txt.setAttribute("y", pts[n].y);
-      txt.textContent = icons[n];
-      g.appendChild(circle);
-      g.appendChild(txt);
-      nodesG.appendChild(g);
-      nodeEls.push(g);
-    }
-
-    function activate(idx) {
-      steps.forEach(function (st, i) { st.classList.toggle("is-active", i === idx); });
-      nodeEls.forEach(function (g, i) { g.classList.toggle("is-active", i === idx); });
-      spokes.forEach(function (p, i) { p.classList.toggle("is-active", i === idx); });
-      ring.forEach(function (p, i) {
-        // highlight the ring edge leaving the active node (flow to next)
-        p.classList.toggle("is-active", i === idx);
+  /* ---------- Pricing toggle ---------- */
+  var pbtns = document.querySelectorAll('.price-toggle__btn');
+  var panels = document.querySelectorAll('.price-panel');
+  pbtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var day = btn.getAttribute('data-day');
+      pbtns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+      panels.forEach(function (p) {
+        p.classList.toggle('is-active', p.getAttribute('data-panel') === day);
       });
-    }
-
-    steps.forEach(function (st, i) {
-      st.addEventListener("mouseenter", function () { activate(i); cancelAuto(); });
-      st.addEventListener("click", function () { activate(i); cancelAuto(); });
     });
-    nodeEls.forEach(function (g, i) {
-      g.style.cursor = "pointer";
-      g.addEventListener("mouseenter", function () { activate(i); cancelAuto(); });
-    });
+  });
 
-    // auto-advance through the loop
-    var auto = null, cur = 0;
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    function startAuto() {
-      if (reduce || auto) return;
-      auto = setInterval(function () {
-        cur = (cur + 1) % count;
-        activate(cur);
-      }, 2200);
-    }
-    function cancelAuto() { if (auto) { clearInterval(auto); auto = null; } }
-
-    activate(0);
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) startAuto();
-        else cancelAuto();
-      }, { threshold: 0.3 }).observe(document.getElementById("flowDiagram"));
-    } else {
-      startAuto();
+  /* ---------- Floating ball-pit orbs ---------- */
+  var orbHost = document.getElementById('orbs');
+  if (orbHost && !reduce) {
+    var colors = ['#ff5da2', '#22d3ee', '#ffd166', '#a3e635', '#a855f7', '#fb923c'];
+    var n = window.innerWidth < 640 ? 7 : 13;
+    for (var i = 0; i < n; i++) {
+      var o = document.createElement('span');
+      o.className = 'orb';
+      var size = 10 + Math.random() * 26;
+      o.style.setProperty('--s', size.toFixed(0) + 'px');
+      o.style.setProperty('--c', colors[i % colors.length]);
+      o.style.setProperty('--dur', (7 + Math.random() * 8).toFixed(1) + 's');
+      o.style.setProperty('--dl', (-Math.random() * 8).toFixed(1) + 's');
+      o.style.left = (Math.random() * 100).toFixed(1) + '%';
+      o.style.top = (Math.random() * 100).toFixed(1) + '%';
+      orbHost.appendChild(o);
     }
   }
 })();
