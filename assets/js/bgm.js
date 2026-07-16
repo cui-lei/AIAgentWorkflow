@@ -225,45 +225,63 @@
 
   btn.addEventListener('click', function () { playing ? stop() : start(); });
 
-  /* Music defaults ON. Try to start the moment the page loads; if the
-     browser's autoplay policy blocks it (the common case for first-time
-     visitors), start seamlessly on the very first gesture instead. */
-  var armed = false;
-  function armGesture() {
-    if (armed) return;
-    armed = true;
-    var once = function (e) {
-      // let clicks on the music button behave as a plain toggle
-      if (e.target && e.target.closest && e.target.closest('#bgmBtn')) return;
-      document.removeEventListener('pointerdown', once);
-      document.removeEventListener('keydown', once);
-      document.removeEventListener('touchend', once);
-      if (!playing) start();
-    };
-    document.addEventListener('pointerdown', once);
-    document.addEventListener('keydown', once);
-    document.addEventListener('touchend', once);
-  }
-
+  /* Music defaults ON. Browsers refuse to make sound before the first
+     user interaction, so we guarantee it with an entry gate: try to
+     autoplay on load — if the browser allows it, the gate dismisses
+     itself instantly; if blocked, the visitor's "Enter" click both
+     satisfies the autoplay policy and starts the music. */
   var pref = null;
   try { pref = localStorage.getItem('mv-bgm'); } catch (e) {}
+
   if (pref !== 'off') {
+    var zh = document.documentElement.lang === 'zh-CN';
+    var gate = document.createElement('div');
+    gate.className = 'bgm-gate';
+    gate.id = 'bgmGate';
+    gate.innerHTML =
+      '<div class="bgm-gate__inner">' +
+      '<span class="bgm-gate__rocket" aria-hidden="true">🚀</span>' +
+      '<h2>Miniversal Kids Cafe</h2>' +
+      '<p>' + (zh ? '一间给爸妈的咖啡馆，一整个给孩子的宇宙' : 'A café for you, a universe for the kids') + '</p>' +
+      '<button class="btn btn--primary btn--lg" id="bgmEnter"><span>' +
+      (zh ? '进入迷你宇宙' : 'Enter the Miniverse') + ' 🎵</span></button>' +
+      '<button class="bgm-gate__mute" id="bgmMute">' +
+      (zh ? '静音进入' : 'Enter quietly') + '</button>' +
+      '</div>';
+    document.body.appendChild(gate);
+
+    var dismissed = false;
+    function dismissGate() {
+      if (dismissed) return;
+      dismissed = true;
+      gate.classList.add('hidden');
+      setTimeout(function () { if (gate.parentNode) gate.parentNode.removeChild(gate); }, 700);
+    }
+
+    gate.querySelector('#bgmEnter').addEventListener('click', function () {
+      start();
+      dismissGate();
+    });
+    gate.querySelector('#bgmMute').addEventListener('click', function () {
+      try { localStorage.setItem('mv-bgm', 'off'); } catch (e) {}
+      dismissGate();
+    });
+
+    // Attempt real autoplay — when the browser allows it, skip the gate.
     var a = new Audio('assets/audio/bgm.mp3');
     a.loop = true;
     a.volume = 0.35;
     a.addEventListener('error', function () {
       audio = null; mode = 'synth';
-      armGesture();
     });
     a.play().then(function () {
-      // autoplay allowed — music is already playing
       audio = a; mode = 'file';
       playing = true; setUI(true);
       try { localStorage.setItem('mv-bgm', 'on'); } catch (e) {}
+      dismissGate();
     }).catch(function () {
-      // blocked by autoplay policy — keep the element, start on first gesture
       if (mode !== 'synth') { audio = a; mode = 'file'; }
-      armGesture();
+      // gate stays — the Enter click will start the music
     });
   }
 })();
