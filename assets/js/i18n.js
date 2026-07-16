@@ -3,6 +3,7 @@
   'use strict';
 
   var ZH = {
+    'brand.sub': '迷你宇宙',
     'nav.playground': '乐园',
     'nav.cafe': '咖啡馆',
     'nav.pricing': '票价',
@@ -143,7 +144,9 @@
     document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
     document.title = META.title[l];
     if (descEl) descEl.setAttribute('content', META.desc[l]);
-    if (btn) btn.textContent = l === 'zh' ? 'EN' : '中文';
+    if (btn) btn.textContent = l === 'zh' ? 'EN' : 'ZH';
+    var bgm = document.getElementById('bgmBtn');
+    if (bgm) bgm.title = l === 'zh' ? '背景音乐' : 'Background music';
     try { localStorage.setItem('mv-lang', l); } catch (e) { /* ignore */ }
   }
 
