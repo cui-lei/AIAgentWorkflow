@@ -225,18 +225,45 @@
 
   btn.addEventListener('click', function () { playing ? stop() : start(); });
 
-  /* Music defaults ON: unless the visitor explicitly turned it off,
-     start on the first user gesture (browsers block audio before any
-     interaction, so this is the earliest possible start). */
+  /* Music defaults ON. Try to start the moment the page loads; if the
+     browser's autoplay policy blocks it (the common case for first-time
+     visitors), start seamlessly on the very first gesture instead. */
+  var armed = false;
+  function armGesture() {
+    if (armed) return;
+    armed = true;
+    var once = function (e) {
+      // let clicks on the music button behave as a plain toggle
+      if (e.target && e.target.closest && e.target.closest('#bgmBtn')) return;
+      document.removeEventListener('pointerdown', once);
+      document.removeEventListener('keydown', once);
+      document.removeEventListener('touchend', once);
+      if (!playing) start();
+    };
+    document.addEventListener('pointerdown', once);
+    document.addEventListener('keydown', once);
+    document.addEventListener('touchend', once);
+  }
+
   var pref = null;
   try { pref = localStorage.getItem('mv-bgm'); } catch (e) {}
   if (pref !== 'off') {
-    var once = function () {
-      document.removeEventListener('pointerdown', once);
-      document.removeEventListener('keydown', once);
-      if (!playing) start();
-    };
-    document.addEventListener('pointerdown', once, { once: true });
-    document.addEventListener('keydown', once, { once: true });
+    var a = new Audio('assets/audio/bgm.mp3');
+    a.loop = true;
+    a.volume = 0.35;
+    a.addEventListener('error', function () {
+      audio = null; mode = 'synth';
+      armGesture();
+    });
+    a.play().then(function () {
+      // autoplay allowed — music is already playing
+      audio = a; mode = 'file';
+      playing = true; setUI(true);
+      try { localStorage.setItem('mv-bgm', 'on'); } catch (e) {}
+    }).catch(function () {
+      // blocked by autoplay policy — keep the element, start on first gesture
+      if (mode !== 'synth') { audio = a; mode = 'file'; }
+      armGesture();
+    });
   }
 })();
