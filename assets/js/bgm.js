@@ -225,11 +225,12 @@
 
   btn.addEventListener('click', function () { playing ? stop() : start(); });
 
-  /* If music was on last visit, resume on the first user gesture
-     (browsers block audio before any interaction). */
+  /* Music defaults ON: unless the visitor explicitly turned it off,
+     start on the first user gesture (browsers block audio before any
+     interaction, so this is the earliest possible start). */
   var pref = null;
   try { pref = localStorage.getItem('mv-bgm'); } catch (e) {}
-  if (pref === 'on') {
+  if (pref !== 'off') {
     var once = function () {
       document.removeEventListener('pointerdown', once);
       document.removeEventListener('keydown', once);
