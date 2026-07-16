@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miniversal 迷你宇宙 · 悉尼太空主题儿童乐园咖啡馆 | 小小宇航员，出发！</title>
-  <meta name="description" content="Miniversal 迷你宇宙——悉尼 Marrickville 的太空主题室内儿童乐园与咖啡馆。火箭滑梯、星尘球池、乐高星球、软垫银河，0–10 岁小宇航员尽情探索，爸妈端一杯好咖啡安心陪伴。" />
+  <title>Miniversal Kids Cafe · Sydney's Space-Themed Play Centre &amp; Café | Little Astronauts, Blast Off!</title>
+  <meta name="description" content="Miniversal — Sydney's space-themed indoor play centre and café in Marrickville. Rocket slides, a stardust ball pit, a LEGO planet and soft-play galaxies for little astronauts aged 0–10, while parents sit down with a proper coffee." />
   <meta name="theme-color" content="#07061f" />
-  <meta property="og:title" content="Miniversal 迷你宇宙 · 悉尼太空主题儿童乐园" />
-  <meta property="og:description" content="小小宇航员，出发！火箭滑梯 · 星尘球池 · 乐高星球 · 咖啡馆。" />
+  <meta property="og:title" content="Miniversal Kids Cafe · Sydney's Space-Themed Play Centre" />
+  <meta property="og:description" content="Little astronauts, blast off! Rocket slides · Stardust ball pit · LEGO planet · Café." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,7 @@
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
-    <a class="nav__brand" href="#top" aria-label="返回顶部">
+    <a class="nav__brand" href="#top" aria-label="Back to top">
       <span class="nav__logo" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="34" height="34">
           <defs>
@@ -42,17 +42,20 @@
       </span>
       <span class="nav__name">Miniversal<em>迷你宇宙</em></span>
     </a>
-    <nav class="nav__links" aria-label="主导航">
-      <a href="#attractions">乐园</a>
-      <a href="#cafe">咖啡馆</a>
-      <a href="#pricing">票价</a>
-      <a href="#party">生日派对</a>
-      <a href="#visit">到访</a>
-      <a href="#visit" class="nav__cta">预约游玩</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav__right">
+      <nav class="nav__links" aria-label="Main navigation">
+        <a href="#attractions" data-i18n="nav.playground">Playground</a>
+        <a href="#cafe" data-i18n="nav.cafe">Café</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#party" data-i18n="nav.party">Parties</a>
+        <a href="#visit" data-i18n="nav.visit">Visit</a>
+        <a href="#visit" class="nav__cta" data-i18n="nav.cta">Book a Visit</a>
+      </nav>
+      <button class="lang-btn" id="langBtn" aria-label="Switch language">中文</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main id="top">
@@ -60,29 +63,29 @@
       <div class="hero__inner">
         <div class="hero__copy">
           <div class="hero__badge reveal">
-            <span class="dot"></span> 悉尼 · Marrickville · 太空主题亲子乐园
+            <span class="dot"></span> <span data-i18n="hero.badge">Sydney · Marrickville · Space-Themed Play Centre &amp; Café</span>
           </div>
           <h1 class="hero__title">
-            <span class="reveal" style="--d:.05s">欢迎登陆</span>
-            <span class="reveal hero__brandline" style="--d:.12s"><span class="grad">Miniversal</span> 迷你宇宙</span>
-            <span class="reveal hero__tag" style="--d:.19s">小小宇航员，<span class="grad grad--2">出发！</span> 🚀</span>
+            <span class="reveal" style="--d:.05s" data-i18n="hero.t1">Welcome aboard</span>
+            <span class="reveal hero__brandline" style="--d:.12s" data-i18n-html="hero.t2"><span class="grad">Miniversal</span></span>
+            <span class="reveal hero__tag" style="--d:.19s" data-i18n-html="hero.t3">Little astronauts, <span class="grad grad--2">blast off!</span> 🚀</span>
           </h1>
-          <p class="hero__sub reveal" style="--d:.27s">
-            火箭滑梯、星尘球池、乐高星球、软垫银河……<br />
-            一座为 <strong>0–10 岁</strong> 孩子打造的星际乐园。<br />
-            让小宇航员尽情探索，爸妈端一杯好咖啡，安心陪伴。
+          <p class="hero__sub reveal" style="--d:.27s" data-i18n-html="hero.sub">
+            Rocket slides, a stardust ball pit, a LEGO planet, soft-play galaxies…<br />
+            A whole interstellar playground for kids aged <strong>0–10</strong>.<br />
+            Little astronauts explore — parents sit down with a proper coffee.
           </p>
           <div class="hero__actions reveal" style="--d:.35s">
             <a href="#visit" class="btn btn--primary">
-              <span>预约游玩</span>
+              <span data-i18n="hero.cta1">Book a Visit</span>
               <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#attractions" class="btn btn--ghost">看看有什么好玩的</a>
+            <a href="#attractions" class="btn btn--ghost" data-i18n="hero.cta2">See what's inside</a>
           </div>
           <dl class="hero__stats reveal" style="--d:.43s">
-            <div><dt data-count="10" data-prefix="0–">0</dt><dd>岁全龄段小宇航员</dd></div>
-            <div><dt data-count="8" data-suffix="+">0</dt><dd>主题星际游乐区</dd></div>
-            <div><dt data-count="50" data-prefix="Max ">0</dt><dd>人生日派对可容纳</dd></div>
+            <div><dt data-count="10" data-prefix="0–">0</dt><dd data-i18n="hero.stat1">for every little astronaut</dd></div>
+            <div><dt data-count="8" data-suffix="+">0</dt><dd data-i18n="hero.stat2">themed play zones</dd></div>
+            <div><dt data-count="50" data-prefix="Max ">0</dt><dd data-i18n="hero.stat3">kids per birthday party</dd></div>
           </dl>
         </div>
         <div class="hero__stage reveal" style="--d:.2s" aria-hidden="true">
@@ -120,75 +123,75 @@
           </div>
         </div>
       </div>
-      <a href="#attractions" class="hero__scroll" aria-label="向下滚动">
+      <a href="#attractions" class="hero__scroll" aria-label="Scroll down">
         <span class="hero__mouse"></span>
-        <span class="hero__scroll-text">向下探索</span>
+        <span class="hero__scroll-text" data-i18n="hero.scroll">SCROLL</span>
       </a>
     </section>
 
     <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i>
-        <span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i>
-        <span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i>
-        <span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i>
+      <div class="marquee__track" data-i18n-html="marquee">
+        <span>Rocket Slides</span><i>✦</i><span>Stardust Ball Pit</span><i>✦</i><span>LEGO Planet</span><i>✦</i><span>Soft-Play Galaxy</span><i>✦</i>
+        <span>Obstacle Course</span><i>✦</i><span>Arcade Games</span><i>✦</i><span>Dress-Ups</span><i>✦</i><span>Barista Coffee</span><i>✦</i>
+        <span>Rocket Slides</span><i>✦</i><span>Stardust Ball Pit</span><i>✦</i><span>LEGO Planet</span><i>✦</i><span>Soft-Play Galaxy</span><i>✦</i>
+        <span>Obstacle Course</span><i>✦</i><span>Arcade Games</span><i>✦</i><span>Dress-Ups</span><i>✦</i><span>Barista Coffee</span><i>✦</i>
       </div>
     </div>
 
     <section class="section attractions" id="attractions">
       <div class="section__head reveal">
-        <span class="eyebrow">✦ THE PLAYGROUND · 星际游乐场</span>
-        <h2>八大主题游乐区，<br />一整座<span class="grad">属于孩子的宇宙</span></h2>
-        <p>从火箭发射台到星尘球海，每一处都为好奇心而设计。安全、干净、每天多次消毒，让孩子放肆玩、爸妈放心陪。</p>
+        <span class="eyebrow" data-i18n="play.eyebrow">✦ THE PLAYGROUND</span>
+        <h2 data-i18n-html="play.h2">Eight themed zones —<br />a whole universe <span class="grad">made for kids</span></h2>
+        <p data-i18n="play.p">From the launch pad to the stardust sea, every corner is built for curiosity — safe, spotless and sanitised throughout the day, so kids play hard and parents relax.</p>
       </div>
       <div class="cards">
         <article class="card reveal" style="--d:.04s;--g1:#ff5da2;--g2:#a855f7">
           <span class="card__emoji">🚀</span>
           <span class="card__num">01</span>
-          <h3>火箭滑梯</h3><span class="card__en">Rocket Slides</span>
-          <p>登上巨型火箭，从星球之巅一路俯冲而下，尖叫与欢笑同时发射升空。</p>
+          <h3 data-i18n="c1.h">Rocket Slides</h3><span class="card__en" data-i18n="c1.s">火箭滑梯</span>
+          <p data-i18n="c1.p">Climb the giant rocket and swoop down from the top of the planet — squeals and giggles at full launch.</p>
         </article>
         <article class="card reveal" style="--d:.09s;--g1:#22d3ee;--g2:#6366f1">
           <span class="card__emoji">🌟</span>
           <span class="card__num">02</span>
-          <h3>星尘球池</h3><span class="card__en">Stardust Ball Pit</span>
-          <p>跳进闪闪发光的巨型球海，成千上万颗「星尘」，像遨游在无垠星辰之间。</p>
+          <h3 data-i18n="c2.h">Stardust Ball Pit</h3><span class="card__en" data-i18n="c2.s">星尘球池</span>
+          <p data-i18n="c2.p">Dive into an ocean of thousands of shimmering “stardust” balls — like swimming through the stars.</p>
         </article>
         <article class="card reveal" style="--d:.14s;--g1:#a3e635;--g2:#22d3ee">
           <span class="card__emoji">🛸</span>
           <span class="card__num">03</span>
-          <h3>软垫银河</h3><span class="card__en">Soft-Play Galaxy</span>
-          <p>柔软安全的软垫王国，尽情攀爬、翻滚、穿梭，把整片银河当作游乐场。</p>
+          <h3 data-i18n="c3.h">Soft-Play Galaxy</h3><span class="card__en" data-i18n="c3.s">软垫银河</span>
+          <p data-i18n="c3.p">A soft, safe padded kingdom for climbing, rolling and weaving — the whole galaxy is a playground.</p>
         </article>
         <article class="card reveal" style="--d:.19s;--g1:#fb923c;--g2:#ff5da2">
           <span class="card__emoji">🧱</span>
           <span class="card__num">04</span>
-          <h3>乐高星球</h3><span class="card__en">LEGO Planet</span>
-          <p>小小建筑师的创意基地，用一块块积木搭出属于自己的星球与飞船。</p>
+          <h3 data-i18n="c4.h">LEGO Planet</h3><span class="card__en" data-i18n="c4.s">乐高星球</span>
+          <p data-i18n="c4.p">A creative base for little master builders — stack up your very own planets and starships, brick by brick.</p>
         </article>
         <article class="card reveal" style="--d:.24s;--g1:#fde047;--g2:#fb923c">
           <span class="card__emoji">🪐</span>
           <span class="card__num">05</span>
-          <h3>障碍闯关</h3><span class="card__en">Obstacle Course</span>
-          <p>穿越「陨石带」的勇气挑战，锻炼平衡、协调与胆量，一关接一关。</p>
+          <h3 data-i18n="c5.h">Obstacle Course</h3><span class="card__en" data-i18n="c5.s">障碍闯关</span>
+          <p data-i18n="c5.p">A courage course through the “asteroid belt” — balance, coordination and bravery, one gate at a time.</p>
         </article>
         <article class="card reveal" style="--d:.29s;--g1:#818cf8;--g2:#22d3ee">
           <span class="card__emoji">🕹️</span>
           <span class="card__num">06</span>
-          <h3>街机 & 互动游戏</h3><span class="card__en">Arcade & Games</span>
-          <p>点亮一块块屏幕，一场接一场的互动冒险，等着小宇航员来挑战高分。</p>
+          <h3 data-i18n="c6.h">Arcade &amp; Games</h3><span class="card__en" data-i18n="c6.s">街机 &amp; 互动游戏</span>
+          <p data-i18n="c6.p">Light up the screens — round after round of interactive adventures, waiting for a brand-new high score.</p>
         </article>
         <article class="card reveal" style="--d:.34s;--g1:#ec4899;--g2:#f59e0b">
           <span class="card__emoji">👩‍🚀</span>
           <span class="card__num">07</span>
-          <h3>角色扮演</h3><span class="card__en">Dress-Up Zone</span>
-          <p>换上宇航服、戴上头盔，展开一段只属于自己的想象力太空剧。</p>
+          <h3 data-i18n="c7.h">Dress-Up Zone</h3><span class="card__en" data-i18n="c7.s">角色扮演</span>
+          <p data-i18n="c7.p">Suit up, helmet on — and star in your very own imaginary space drama.</p>
         </article>
         <article class="card reveal" style="--d:.39s;--g1:#34d399;--g2:#22d3ee">
           <span class="card__emoji">🍼</span>
           <span class="card__num">08</span>
-          <h3>幼儿专区</h3><span class="card__en">Toddler Bay</span>
-          <p>为 0–3 岁宝宝准备的温柔小星域，独立、安全、无忧，第一次冒险从这里开始。</p>
+          <h3 data-i18n="c8.h">Toddler Bay</h3><span class="card__en" data-i18n="c8.s">幼儿专区</span>
+          <p data-i18n="c8.p">A gentle little corner of the cosmos for babies 0–3 — separate, safe and worry-free first adventures.</p>
         </article>
       </div>
     </section>
@@ -196,15 +199,15 @@
     <section class="section cafe" id="cafe">
       <div class="cafe__grid">
         <div class="cafe__copy reveal">
-          <span class="eyebrow">☕ THE CAFÉ · 补给舱</span>
-          <h2>爸妈的加油站，<br />小宇航员的<span class="grad grad--2">补给舱</span></h2>
-          <p>玩累了就来补充能量。驻店厨师现做的手工披萨、香甜蛋糕与健康儿童餐，还有一杯认真对待的现磨咖啡——大人小孩，一起能量满格。</p>
+          <span class="eyebrow" data-i18n="cafe.eyebrow">☕ THE CAFÉ</span>
+          <h2 data-i18n-html="cafe.h2">A pit stop for parents,<br />a <span class="grad grad--2">supply bay</span> for little astronauts</h2>
+          <p data-i18n="cafe.p">Refuel after a big mission. Hand-made pizzas, sweet cakes and healthy kids meals from our in-house chef — plus a seriously good barista coffee. Grown-ups and little ones, batteries recharged.</p>
           <ul class="cafe__list">
-            <li><span>☕</span> 现磨咖啡 · 认真对待的每一杯</li>
-            <li><span>🍕</span> 手工披萨 · 驻店厨师现烤</li>
-            <li><span>🍰</span> 甜点蛋糕 · 香甜不腻的小奖励</li>
-            <li><span>🧒</span> 健康儿童餐 · 挑嘴宝宝也爱吃</li>
-            <li><span>🧃</span> 鲜榨果汁 · 冒险补给的能量源</li>
+            <li data-i18n-html="cafe.l1"><span>☕</span> Barista coffee · every cup taken seriously</li>
+            <li data-i18n-html="cafe.l2"><span>🍕</span> Hand-made pizza · fresh from our kitchen</li>
+            <li data-i18n-html="cafe.l3"><span>🍰</span> Cakes &amp; sweets · a well-earned reward</li>
+            <li data-i18n-html="cafe.l4"><span>🧒</span> Healthy kids meals · picky eaters approved</li>
+            <li data-i18n-html="cafe.l5"><span>🧃</span> Fresh juice · fuel for the next mission</li>
           </ul>
         </div>
         <div class="cafe__cards reveal" style="--d:.12s" aria-hidden="true">
@@ -218,69 +221,69 @@
 
     <section class="section pricing" id="pricing">
       <div class="section__head reveal">
-        <span class="eyebrow">🎟️ ENTRY · 入场票价</span>
-        <h2>票价<span class="grad">一目了然</span></h2>
-        <p>6 个月以下宝宝免费入场。为了安全与卫生，小朋友需穿防滑袜，家长入场也请穿袜子（现场均可购买）。</p>
+        <span class="eyebrow" data-i18n="price.eyebrow">🎟️ ENTRY PRICES</span>
+        <h2 data-i18n-html="price.h2">Pricing, <span class="grad">crystal clear</span></h2>
+        <p data-i18n="price.p">Babies under 6 months enter free. For safety and hygiene, kids need grippy socks and parents must wear socks on entry — both available at the counter.</p>
       </div>
       <div class="price-toggle reveal">
-        <button class="price-toggle__btn is-active" data-day="week">工作日 Weekday</button>
-        <button class="price-toggle__btn" data-day="weekend">周末 Weekend</button>
+        <button class="price-toggle__btn is-active" data-day="week" data-i18n="price.week">Weekdays</button>
+        <button class="price-toggle__btn" data-day="weekend" data-i18n="price.weekend">Weekend</button>
       </div>
       <div class="price-panels reveal" style="--d:.08s">
         <div class="price-panel is-active" data-panel="week">
           <table class="price-table">
             <thead>
-              <tr><th>年龄</th><th>按小时 Hourly</th><th>全天通票 Day Pass</th></tr>
+              <tr><th data-i18n="price.h.age">Age</th><th data-i18n="price.h.hourly">Hourly Play</th><th data-i18n="price.h.day">Day Pass</th></tr>
             </thead>
             <tbody>
-              <tr><td>6–12 个月</td><td>$10</td><td>$10</td></tr>
-              <tr><td>1–3 岁</td><td>$12</td><td>$36</td></tr>
-              <tr class="is-hero"><td>4–12 岁</td><td>$14</td><td>$42</td></tr>
-              <tr><td>成人</td><td>$5</td><td>$5</td></tr>
-              <tr><td>6 个月以下</td><td colspan="2" class="price-free">免费 Free</td></tr>
+              <tr><td data-i18n="price.r1">6–12 months</td><td>$10</td><td>$10</td></tr>
+              <tr><td data-i18n="price.r2">1–3 yrs</td><td>$12</td><td>$36</td></tr>
+              <tr class="is-hero"><td data-i18n="price.r3">4–12 yrs</td><td>$14</td><td>$42</td></tr>
+              <tr><td data-i18n="price.r4">Adults</td><td>$5</td><td>$5</td></tr>
+              <tr><td data-i18n="price.r5">Under 6 months</td><td colspan="2" class="price-free" data-i18n="price.free">Free</td></tr>
             </tbody>
           </table>
         </div>
         <div class="price-panel" data-panel="weekend">
           <table class="price-table">
             <thead>
-              <tr><th>年龄</th><th>按小时 Hourly</th><th>全天通票 Day Pass</th></tr>
+              <tr><th data-i18n="price.h.age">Age</th><th data-i18n="price.h.hourly">Hourly Play</th><th data-i18n="price.h.day">Day Pass</th></tr>
             </thead>
             <tbody>
-              <tr><td>6–12 个月</td><td>$12</td><td>$12</td></tr>
-              <tr><td>1–3 岁</td><td>$14</td><td>$42</td></tr>
-              <tr class="is-hero"><td>4–12 岁</td><td>$16</td><td>$48</td></tr>
-              <tr><td>成人</td><td>$5</td><td>$5</td></tr>
-              <tr><td>6 个月以下</td><td colspan="2" class="price-free">免费 Free</td></tr>
+              <tr><td data-i18n="price.r1">6–12 months</td><td>$12</td><td>$12</td></tr>
+              <tr><td data-i18n="price.r2">1–3 yrs</td><td>$14</td><td>$42</td></tr>
+              <tr class="is-hero"><td data-i18n="price.r3">4–12 yrs</td><td>$16</td><td>$48</td></tr>
+              <tr><td data-i18n="price.r4">Adults</td><td>$5</td><td>$5</td></tr>
+              <tr><td data-i18n="price.r5">Under 6 months</td><td colspan="2" class="price-free" data-i18n="price.free">Free</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-      <p class="price-note reveal">* 价格以门店现场公示为准。防滑袜可现场购买。</p>
+      <p class="price-note reveal" data-i18n="price.note">* Prices as displayed in-store. Grippy socks available for purchase on site.</p>
     </section>
 
     <section class="section party" id="party">
       <div class="party__card reveal">
         <div class="party__glow" aria-hidden="true"></div>
         <div class="party__head">
-          <span class="eyebrow">🎂 BIRTHDAY · 星际庆典</span>
-          <h2>一场专属孩子的<br /><span class="grad grad--2">星际生日派对</span></h2>
-          <p>把最难忘的一天交给我们。专属派对管家全程协助，你只管和孩子一起享受这场太空庆典。</p>
+          <span class="eyebrow" data-i18n="party.eyebrow">🎂 BIRTHDAY PARTIES</span>
+          <h2 data-i18n-html="party.h2">An interstellar<br /><span class="grad grad--2">birthday party</span> to remember</h2>
+          <p data-i18n="party.p">Hand us the most unforgettable day of the year. A dedicated party host takes care of everything — you just enjoy the space celebration with your child.</p>
         </div>
         <ul class="party__list">
-          <li><span class="party__ic">🍽️</span><div><b>厨师现做儿童餐</b>每位小朋友一份，驻店厨师亲手烹制</div></li>
-          <li><span class="party__ic">🧃</span><div><b>鲜榨果汁</b>每位小朋友一杯，冒险补给不间断</div></li>
-          <li><span class="party__ic">🧦</span><div><b>防滑袜</b>每位小朋友一双，安心尽情玩</div></li>
-          <li><span class="party__ic">🎈</span><div><b>独享主题派对房</b>Miniversal 主题餐具与桌面布置</div></li>
-          <li><span class="party__ic">💌</span><div><b>定制主题邀请函</b>一份独一无二的太空邀约</div></li>
-          <li><span class="party__ic">🧑‍🚀</span><div><b>专属派对管家</b>全程协助，帮你安排好每个细节</div></li>
+          <li><span class="party__ic">🍽️</span><div data-i18n-html="party.l1"><b>Kids meal by our chef</b>One for every child, cooked fresh in-house</div></li>
+          <li><span class="party__ic">🧃</span><div data-i18n-html="party.l2"><b>Fresh juice</b>One each — mission fuel, topped up</div></li>
+          <li><span class="party__ic">🧦</span><div data-i18n-html="party.l3"><b>Grippy socks</b>One pair per child, play safe all day</div></li>
+          <li><span class="party__ic">🎈</span><div data-i18n-html="party.l4"><b>Private themed party room</b>Miniversal table settings &amp; cutlery</div></li>
+          <li><span class="party__ic">💌</span><div data-i18n-html="party.l5"><b>Themed invitations</b>A one-of-a-kind space summons</div></li>
+          <li><span class="party__ic">🧑‍🚀</span><div data-i18n-html="party.l6"><b>Dedicated party host</b>Every detail arranged for you</div></li>
         </ul>
         <div class="party__meta">
-          <span>👶 最多可容纳 <strong>50</strong> 位小朋友</span>
-          <span>📅 工作日最低 <strong>15</strong> 人 · 周末最低 <strong>23</strong> 人起订</span>
+          <span data-i18n-html="party.m1">👶 Room for up to <strong>50</strong> kids</span>
+          <span data-i18n-html="party.m2">📅 Minimum <strong>15</strong> kids on weekdays · <strong>23</strong> on weekends</span>
         </div>
         <div class="party__cta">
-          <a href="tel:+61293903017" class="btn btn--primary"><span>预订派对</span>
+          <a href="tel:+61293903017" class="btn btn--primary"><span data-i18n="party.cta">Book a Party</span>
             <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -289,39 +292,39 @@
 
     <section class="section visit" id="visit">
       <div class="section__head reveal">
-        <span class="eyebrow">📍 VISIT US · 到访我们</span>
-        <h2>来 Miniversal，<span class="grad">发射一场冒险</span></h2>
+        <span class="eyebrow" data-i18n="visit.eyebrow">📍 VISIT US</span>
+        <h2 data-i18n-html="visit.h2">Come to Miniversal — <span class="grad">launch an adventure</span></h2>
       </div>
       <div class="visit__grid">
         <a class="visit__item reveal" href="https://maps.google.com/?q=24-28+Murray+St+Marrickville+NSW+2204" target="_blank" rel="noopener">
           <span class="visit__ic">📍</span>
-          <h3>地址</h3>
-          <p>24–28 Murray St<br />Marrickville NSW 2204</p>
-          <span class="visit__link">在地图中打开 →</span>
+          <h3 data-i18n="visit.i1h">Address</h3>
+          <p data-i18n-html="visit.i1p">24–28 Murray St<br />Marrickville NSW 2204</p>
+          <span class="visit__link" data-i18n="visit.i1l">Open in Maps →</span>
         </a>
         <a class="visit__item reveal" style="--d:.08s" href="tel:+61293903017">
           <span class="visit__ic">📞</span>
-          <h3>电话预约</h3>
+          <h3 data-i18n="visit.i2h">Call to Book</h3>
           <p>02 9390 3017</p>
-          <span class="visit__link">拨打电话 →</span>
+          <span class="visit__link" data-i18n="visit.i2l">Call now →</span>
         </a>
         <div class="visit__item reveal" style="--d:.16s">
           <span class="visit__ic">👶</span>
-          <h3>适龄</h3>
-          <p>0–10 岁小宇航员<br />各年龄段都有专属区域</p>
+          <h3 data-i18n="visit.i3h">Ages</h3>
+          <p data-i18n-html="visit.i3p">Little astronauts aged 0–10<br />dedicated zones for every age</p>
         </div>
         <div class="visit__item reveal" style="--d:.24s">
           <span class="visit__ic">🕒</span>
-          <h3>营业时间</h3>
-          <p>营业时间可能因私人包场调整，<br />出行前请查看 Google 最新信息</p>
+          <h3 data-i18n="visit.i4h">Opening Hours</h3>
+          <p data-i18n-html="visit.i4p">Hours may vary with private hires —<br />check Google before you visit</p>
         </div>
       </div>
       <div class="visit__banner reveal">
         <div>
-          <h3>准备好出发了吗？</h3>
-          <p>预约游玩、包场派对，或只是来喝杯咖啡看孩子撒欢——随时欢迎登陆迷你宇宙。</p>
+          <h3 data-i18n="visit.bh">Ready for lift-off?</h3>
+          <p data-i18n="visit.bp">Book a visit, hire the venue for a party, or just drop in for a coffee while the kids go wild — the Miniverse is always open to explorers.</p>
         </div>
-        <a href="tel:+61293903017" class="btn btn--primary btn--lg"><span>立即预约</span>
+        <a href="tel:+61293903017" class="btn btn--primary btn--lg"><span data-i18n="visit.bcta">Book Now</span>
           <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -332,23 +335,24 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <span class="nav__name">Miniversal<em>迷你宇宙</em></span>
-        <p>悉尼 Marrickville 的太空主题儿童乐园与咖啡馆。<br />小小宇航员，出发！🚀</p>
+        <p data-i18n-html="footer.p">Sydney's space-themed kids play centre &amp; café in Marrickville.<br />Little astronauts, blast off! 🚀</p>
       </div>
-      <nav class="footer__nav" aria-label="页脚导航">
-        <a href="#attractions">乐园</a>
-        <a href="#cafe">咖啡馆</a>
-        <a href="#pricing">票价</a>
-        <a href="#party">生日派对</a>
-        <a href="#visit">到访</a>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#attractions" data-i18n="nav.playground">Playground</a>
+        <a href="#cafe" data-i18n="nav.cafe">Café</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#party" data-i18n="nav.party">Parties</a>
+        <a href="#visit" data-i18n="nav.visit">Visit</a>
       </nav>
     </div>
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> Miniversal Kids Cafe · 24–28 Murray St, Marrickville NSW</span>
-      <span class="footer__made">Made with ✦ for little astronauts</span>
+      <span class="footer__made" data-i18n="footer.made">Made with ✦ for little astronauts</span>
     </div>
   </footer>
 
   <script src="assets/js/starfield.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

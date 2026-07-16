@@ -164,6 +164,14 @@ ul { list-style: none; }
 @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
 .nav__name { font-family: var(--font-disp); font-weight: 700; font-size: 1.28rem; letter-spacing: .01em; }
 .nav__name em { font-style: normal; font-weight: 400; font-size: .82rem; color: var(--muted); margin-left: 7px; }
+.nav__right { display: flex; align-items: center; gap: 10px; }
+.lang-btn {
+  font-family: var(--font-en); font-weight: 600; font-size: .85rem; letter-spacing: .05em;
+  padding: 8px 15px; border-radius: 100px; border: 1px solid var(--card-brd);
+  background: rgba(255,255,255,.04); color: var(--muted); cursor: pointer;
+  transition: color .2s, border-color .2s, transform .2s;
+}
+.lang-btn:hover { color: var(--ink); border-color: var(--cyan); transform: translateY(-1px); }
 .nav__links { display: flex; align-items: center; gap: 6px; }
 .nav__links a { font-family: var(--font-disp); font-weight: 500; padding: 9px 15px; border-radius: 100px; color: var(--muted); font-size: .98rem; transition: color .2s, background .2s; }
 .nav__links a:hover { color: var(--ink); background: rgba(255,255,255,.05); }
