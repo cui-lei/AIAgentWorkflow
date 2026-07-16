@@ -1,7 +1,9 @@
 /* Miniversal · background music
    1) If assets/audio/bgm.mp3 exists (user-supplied, licensed), loop it.
-   2) Otherwise fall back to an original Ghibli-style music-box waltz
-      synthesized with Web Audio (no copyrighted melody). */
+   2) Otherwise play an ORIGINAL gentle ballad synthesized with Web Audio —
+      written in the spirit of classic Ghibli end-credit songs (harp-like
+      arpeggios, a singing lead, warm folk harmony) but an original melody,
+      not a cover of any existing work. */
 (function () {
   'use strict';
 
@@ -21,68 +23,128 @@
   var playing = false;
   var mode = null;          // 'file' | 'synth'
   var audio = null;         // HTMLAudio for file mode
-  var ctx = null, master = null, timer = null, nextLoop = 0;
+  var ctx = null, master = null, wetBus = null, timer = null, nextLoop = 0;
 
-  /* ---------------- original music-box waltz (synth fallback) ------------- */
-  var BPM = 84, BEAT = 60 / BPM, BARS = 16, LOOP = BARS * 3 * BEAT;
+  /* ================= original ballad (synth fallback) =================
+     4/4, 76 BPM, C major. Verse (8 bars) + chorus (8 bars), 64 beats.
+     Harp eighth-note arpeggios under a singing lead with light vibrato. */
+  var BPM = 76, BEAT = 60 / BPM, BEATS = 64, LOOP = BEATS * BEAT;
 
-  /* Original composition — gentle 3/4 music-box arpeggios (not a cover). */
-  var MELODY = [
-    [0,72],[1,76],[2,79], [3,81],[4,79],[5,76], [6,77],[7,81],[8,84], [9,83],[10,79],[11,74],
-    [12,76],[13,79],[14,83], [15,81],[16,77],[17,74], [18,72],[19,74],[20,76], [21,79],
-    [24,84],[25,83],[26,79], [27,81],[28,77],[29,76], [30,74],[31,77],[32,81], [33,79],[34,76],[35,72],
-    [36,81],[37,84],[38,88], [39,86],[40,84],[41,81], [42,79],[43,76],[44,74], [45,72]
+  /* Chords: one per bar. b = bass midi, t = chord tones (mid register). */
+  var CHORDS = [
+    { b: 48, t: [60, 64, 67] },  // C
+    { b: 47, t: [59, 62, 67] },  // G/B
+    { b: 45, t: [57, 60, 64] },  // Am
+    { b: 40, t: [55, 59, 64] },  // Em
+    { b: 41, t: [57, 60, 65] },  // F
+    { b: 48, t: [60, 64, 67] },  // C
+    { b: 50, t: [57, 62, 65] },  // Dm
+    { b: 43, t: [55, 59, 62] },  // G
+    { b: 41, t: [57, 60, 65] },  // F   (chorus)
+    { b: 43, t: [55, 59, 62] },  // G
+    { b: 40, t: [55, 59, 64] },  // Em
+    { b: 45, t: [57, 60, 64] },  // Am
+    { b: 41, t: [57, 60, 65] },  // F
+    { b: 43, t: [55, 59, 62] },  // G
+    { b: 48, t: [60, 64, 67] },  // C
+    { b: 48, t: [60, 64, 67] }   // C
   ];
-  var BASS = [48,45,41,43,40,41,48,43,48,45,50,43,45,41,43,48];
+
+  /* Original melody: [startBeat, midi, durationBeats]. Not a transcription
+     of any existing song — composed for this site. */
+  var MELODY = [
+    // verse
+    [0, 76, 1], [1, 79, 1], [2, 81, 2],
+    [4, 79, 1.5], [5.5, 76, 0.5], [6, 74, 2],
+    [8, 72, 1], [9, 76, 1], [10, 81, 2],
+    [12, 79, 3], [15, 76, 1],
+    [16, 77, 1], [17, 81, 1], [18, 84, 2],
+    [20, 83, 1.5], [21.5, 79, 0.5], [22, 76, 2],
+    [24, 74, 1], [25, 77, 1], [26, 81, 1], [27, 77, 1],
+    [28, 79, 3], [31, 74, 1],
+    // chorus
+    [32, 84, 2], [34, 83, 1], [35, 81, 1],
+    [36, 79, 2], [38, 81, 1], [39, 83, 1],
+    [40, 84, 1.5], [41.5, 83, 0.5], [42, 79, 2],
+    [44, 81, 3], [47, 76, 1],
+    [48, 77, 1], [49, 81, 1], [50, 84, 2],
+    [52, 86, 1.5], [53.5, 84, 0.5], [54, 83, 2],
+    [56, 84, 2], [58, 79, 2],
+    [60, 76, 3.5]
+  ];
 
   function midiHz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
 
   function makeVerb() {
-    var len = ctx.sampleRate * 2.2;
+    var len = ctx.sampleRate * 2.4;
     var buf = ctx.createBuffer(2, len, ctx.sampleRate);
     for (var c = 0; c < 2; c++) {
       var d = buf.getChannelData(c);
-      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.4);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6);
     }
     var conv = ctx.createConvolver();
     conv.buffer = buf;
     return conv;
   }
 
-  function pluck(t, midi, vol, wet) {
+  /* Harp-like pluck (arpeggios, bass attack). */
+  function pluck(t, midi, vol, decay) {
     var f = midiHz(midi);
     var g = ctx.createGain();
     g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(vol, t + 0.008);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.9);
-    var o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = f;
-    var o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 4;
+    g.gain.linearRampToValueAtTime(vol, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + decay);
+    var o1 = ctx.createOscillator(); o1.type = 'triangle'; o1.frequency.value = f;
+    var o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
     var g2 = ctx.createGain();
-    g2.gain.setValueAtTime(vol * 0.18, t);
-    g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+    g2.gain.setValueAtTime(vol * 0.25, t);
+    g2.gain.exponentialRampToValueAtTime(0.0001, t + decay * 0.4);
     o1.connect(g); o2.connect(g2); g2.connect(g);
-    g.connect(master); g.connect(wet);
-    o1.start(t); o2.start(t); o1.stop(t + 2); o2.stop(t + 0.6);
+    g.connect(master); g.connect(wetBus);
+    o1.start(t); o2.start(t);
+    o1.stop(t + decay + 0.1); o2.stop(t + decay * 0.4 + 0.1);
   }
 
-  function pad(t, midi, dur, vol, wet) {
+  /* Singing lead: soft attack, sustained, gentle vibrato. */
+  function voice(t, midi, dur, vol) {
+    var f = midiHz(midi);
     var g = ctx.createGain();
+    var a = Math.min(0.07, dur * 0.2), r = Math.min(0.3, dur * 0.4);
     g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(vol, t + dur * 0.4);
+    g.gain.linearRampToValueAtTime(vol, t + a);
+    g.gain.setValueAtTime(vol, t + dur - r);
     g.gain.linearRampToValueAtTime(0.0001, t + dur);
-    var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = midiHz(midi);
-    o.connect(g); g.connect(master); g.connect(wet);
-    o.start(t); o.stop(t + dur + 0.1);
+    var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    var o2 = ctx.createOscillator(); o2.type = 'triangle'; o2.frequency.value = f;
+    var g2 = ctx.createGain(); g2.gain.value = 0.35;
+    // vibrato: starts after the attack, ~5 Hz, subtle
+    var lfo = ctx.createOscillator(); lfo.frequency.value = 5;
+    var lfoG = ctx.createGain();
+    lfoG.gain.setValueAtTime(0, t);
+    lfoG.gain.linearRampToValueAtTime(f * 0.006, t + Math.min(0.35, dur * 0.5));
+    lfo.connect(lfoG); lfoG.connect(o.frequency); lfoG.connect(o2.frequency);
+    o.connect(g); o2.connect(g2); g2.connect(g);
+    g.connect(master); g.connect(wetBus);
+    o.start(t); o2.start(t); lfo.start(t);
+    o.stop(t + dur + 0.1); o2.stop(t + dur + 0.1); lfo.stop(t + dur + 0.1);
   }
 
-  var wetBus = null;
   function scheduleLoopAt(t0) {
-    MELODY.forEach(function (n) { pluck(t0 + n[0] * BEAT, n[1], 0.42, wetBus); });
-    BASS.forEach(function (m, bar) {
-      var t = t0 + bar * 3 * BEAT;
-      pluck(t, m, 0.2, wetBus);
-      pad(t, m + 12, 3 * BEAT, 0.06, wetBus);
-      pad(t, m + 19, 3 * BEAT, 0.045, wetBus);
+    // lead melody
+    MELODY.forEach(function (n) {
+      voice(t0 + n[0] * BEAT, n[1], n[2] * BEAT * 0.98, 0.22);
+    });
+    // per-bar bass + harp arpeggio
+    CHORDS.forEach(function (ch, bar) {
+      var bt = t0 + bar * 4 * BEAT;
+      pluck(bt, ch.b, 0.16, 3.2);
+      pluck(bt + 2 * BEAT, ch.b + 7, 0.09, 2.2);
+      var pat = [0, 1, 2, 1, 0, 1, 2, 1]; // eighth-note arpeggio
+      for (var i = 0; i < 8; i++) {
+        var tone = ch.t[pat[i]];
+        var v = (i === 0 ? 0.11 : 0.075) * (i % 2 ? 0.85 : 1);
+        pluck(bt + i * 0.5 * BEAT, tone, v, 1.6);
+      }
     });
   }
 
@@ -93,25 +155,25 @@
       master.gain.value = 0;
       master.connect(ctx.destination);
       var verb = makeVerb();
-      wetBus = ctx.createGain(); wetBus.gain.value = 0.35;
+      wetBus = ctx.createGain(); wetBus.gain.value = 0.4;
       wetBus.connect(verb);
-      var verbOut = ctx.createGain(); verbOut.gain.value = 0.6;
+      var verbOut = ctx.createGain(); verbOut.gain.value = 0.55;
       verb.connect(verbOut); verbOut.connect(ctx.destination);
     }
     if (ctx.state === 'suspended') ctx.resume();
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-    master.gain.linearRampToValueAtTime(0.17, ctx.currentTime + 1.2);
+    master.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 1.5);
     nextLoop = Math.max(nextLoop, ctx.currentTime + 0.1);
     if (!timer) {
       var tick = function () {
-        while (nextLoop < ctx.currentTime + 3) {
+        while (nextLoop < ctx.currentTime + 4) {
           scheduleLoopAt(nextLoop);
           nextLoop += LOOP;
         }
       };
       tick();
-      timer = setInterval(tick, 800);
+      timer = setInterval(tick, 1000);
     }
   }
 
