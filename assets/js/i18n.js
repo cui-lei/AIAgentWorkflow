@@ -10,23 +10,23 @@
     'nav.visit': '到访',
     'nav.cta': '预约游玩',
 
-    'hero.badge': '悉尼 · Marrickville · 太空主题亲子乐园',
+    'hero.badge': '悉尼 · Marrickville · 太空主题儿童咖啡馆',
     'hero.t1': '欢迎登陆',
     'hero.t2': '<span class="grad">Miniversal</span> 迷你宇宙',
     'hero.t3': '小小宇航员，<span class="grad grad--2">出发！</span> 🚀',
-    'hero.sub': '火箭滑梯、星尘球池、乐高星球、软垫银河……<br />一座为 <strong>0–10 岁</strong> 孩子打造的星际乐园。<br />让小宇航员尽情探索，爸妈端一杯好咖啡，安心陪伴。',
+    'hero.sub': '一间给爸妈的咖啡馆，一整个给孩子的宇宙。<br />现磨好咖啡、驻店厨师现做美食——<br />而 <strong>0–10 岁</strong> 的小宇航员，正在火箭滑梯和星尘球池里撒欢。',
     'hero.cta1': '预约游玩',
-    'hero.cta2': '看看有什么好玩的',
+    'hero.cta2': '进来看看',
     'hero.stat1': '岁全龄段小宇航员',
     'hero.stat2': '主题星际游乐区',
     'hero.stat3': '人生日派对可容纳',
     'hero.scroll': '向下探索',
 
-    'marquee': '<span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i><span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i><span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i><span>障碍闯关</span><i>✦</i><span>街机游戏</span><i>✦</i><span>角色扮演</span><i>✦</i><span>现磨咖啡</span><i>✦</i>',
+    'marquee': '<span>现磨咖啡</span><i>✦</i><span>手工披萨</span><i>✦</i><span>甜点蛋糕</span><i>✦</i><span>儿童餐</span><i>✦</i><span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i><span>现磨咖啡</span><i>✦</i><span>手工披萨</span><i>✦</i><span>甜点蛋糕</span><i>✦</i><span>儿童餐</span><i>✦</i><span>火箭滑梯</span><i>✦</i><span>星尘球池</span><i>✦</i><span>乐高星球</span><i>✦</i><span>软垫银河</span><i>✦</i>',
 
     'play.eyebrow': '✦ THE PLAYGROUND · 星际游乐场',
     'play.h2': '八大主题游乐区，<br />一整座<span class="grad">属于孩子的宇宙</span>',
-    'play.p': '从火箭发射台到星尘球海，每一处都为好奇心而设计。安全、干净、每天多次消毒，让孩子放肆玩、爸妈放心陪。',
+    'play.p': '你安心喝咖啡的时候，孩子拥有一整个宇宙。从火箭发射台到星尘球海，每一处都为好奇心而设计——安全、干净、每天多次消毒。',
 
     'c1.h': '火箭滑梯', 'c1.s': 'ROCKET SLIDES',
     'c1.p': '登上巨型火箭，从星球之巅一路俯冲而下，尖叫与欢笑同时发射升空。',
@@ -45,9 +45,9 @@
     'c8.h': '幼儿专区', 'c8.s': 'TODDLER BAY',
     'c8.p': '为 0–3 岁宝宝准备的温柔小星域，独立、安全、无忧，第一次冒险从这里开始。',
 
-    'cafe.eyebrow': '☕ THE CAFÉ · 补给舱',
-    'cafe.h2': '爸妈的加油站，<br />小宇航员的<span class="grad grad--2">补给舱</span>',
-    'cafe.p': '玩累了就来补充能量。驻店厨师现做的手工披萨、香甜蛋糕与健康儿童餐，还有一杯认真对待的现磨咖啡——大人小孩，一起能量满格。',
+    'cafe.eyebrow': '☕ THE CAFÉ · 咖啡馆',
+    'cafe.h2': '首先，这是一家<br /><span class="grad grad--2">认真做咖啡</span>的店',
+    'cafe.p': 'Miniversal 的本体是一家儿童咖啡馆。认真对待的现磨咖啡、驻店厨师现做的手工披萨、香甜蛋糕与健康儿童餐——你可以真正坐下来，好好吃一顿、喘口气，孩子就在不远处的宇宙里探险。',
     'cafe.l1': '<span>☕</span> 现磨咖啡 · 认真对待的每一杯',
     'cafe.l2': '<span>🍕</span> 手工披萨 · 驻店厨师现烤',
     'cafe.l3': '<span>🍰</span> 甜点蛋糕 · 香甜不腻的小奖励',
@@ -98,18 +98,18 @@
     'visit.bp': '预约游玩、包场派对，或只是来喝杯咖啡看孩子撒欢——随时欢迎登陆迷你宇宙。',
     'visit.bcta': '立即预约',
 
-    'footer.p': '悉尼 Marrickville 的太空主题儿童乐园与咖啡馆。<br />小小宇航员，出发！🚀',
+    'footer.p': '悉尼 Marrickville 的太空主题儿童咖啡馆。<br />一间给爸妈的咖啡馆，一整个给孩子的宇宙。🚀',
     'footer.made': 'Made with ✦ for little astronauts'
   };
 
   var META = {
     title: {
       en: document.title,
-      zh: 'Miniversal 迷你宇宙 · 悉尼太空主题儿童乐园咖啡馆 | 小小宇航员，出发！'
+      zh: 'Miniversal 迷你宇宙 · 悉尼太空主题儿童咖啡馆 | 小小宇航员，出发！'
     },
     desc: {
       en: '',
-      zh: 'Miniversal 迷你宇宙——悉尼 Marrickville 的太空主题室内儿童乐园与咖啡馆。火箭滑梯、星尘球池、乐高星球、软垫银河，0–10 岁小宇航员尽情探索，爸妈端一杯好咖啡安心陪伴。'
+      zh: 'Miniversal 迷你宇宙——悉尼 Marrickville 的太空主题儿童咖啡馆。爸妈享受现磨好咖啡与厨师现做美食，0–10 岁小宇航员在火箭滑梯、星尘球池和软垫银河里尽情探索。'
     }
   };
   var descEl = document.querySelector('meta[name="description"]');
