@@ -347,6 +347,37 @@ a.visit__item:hover { transform: translateY(-6px); border-color: var(--cyan); }
 .footer__bottom { max-width: var(--maxw); margin: 0 auto; padding: 20px clamp(20px,5vw,40px) 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted-2); font-size: .85rem; }
 .footer__made { color: var(--pink); }
 
+/* ---------- BGM button ---------- */
+.bgm-btn {
+  position: fixed; right: 22px; bottom: 22px; z-index: 90;
+  width: 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--muted); cursor: pointer;
+  background: rgba(18, 14, 52, .78); backdrop-filter: blur(12px);
+  border: 1px solid var(--card-brd);
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.8);
+  transition: color .25s, border-color .25s, transform .25s, box-shadow .25s;
+}
+.bgm-btn:hover { color: var(--ink); border-color: var(--cyan); transform: translateY(-3px); }
+.bgm-btn.playing {
+  color: #0a0620; border-color: transparent;
+  background: var(--grad);
+  box-shadow: 0 14px 34px -10px rgba(168,85,247,.75);
+  animation: bgm-pulse 2.4s ease-in-out infinite;
+}
+@keyframes bgm-pulse {
+  0%,100% { box-shadow: 0 14px 34px -10px rgba(168,85,247,.75), 0 0 0 0 rgba(255,93,162,.45); }
+  50% { box-shadow: 0 14px 34px -10px rgba(168,85,247,.75), 0 0 0 12px rgba(255,93,162,0); }
+}
+.bgm-btn__wave { position: absolute; top: -7px; right: -3px; display: none; gap: 2.5px; align-items: flex-end; height: 12px; }
+.bgm-btn.playing .bgm-btn__wave { display: inline-flex; }
+.bgm-btn__wave i { width: 3px; border-radius: 2px; background: var(--yellow); animation: bgm-eq 1s ease-in-out infinite; }
+.bgm-btn__wave i:nth-child(1) { height: 6px; }
+.bgm-btn__wave i:nth-child(2) { height: 11px; animation-delay: .18s; }
+.bgm-btn__wave i:nth-child(3) { height: 8px; animation-delay: .36s; }
+@keyframes bgm-eq { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1); } }
+@media (max-width: 560px) { .bgm-btn { right: 16px; bottom: 16px; width: 48px; height: 48px; } }
+
 /* ---------- Mobile menu / responsive ---------- */
 @media (max-width: 940px) {
   .cards, .visit__grid { grid-template-columns: repeat(2, 1fr); }
